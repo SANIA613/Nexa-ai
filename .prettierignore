@@ -1,0 +1,7 @@
+dist
+build
+node_modules
+coverage
+.DS_Store
+bun.lock
+*.log

@@ -1,0 +1,1431 @@
+{
+  "user": {
+    "id": "usr_1",
+    "name": "Saniya",
+    "email": "saniyalinkedin613@gmail.com",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+    "role": "AI & Software Developer"
+  },
+  "tasks": [
+    {
+      "id": "task_1",
+      "title": "Complete AI chatbot application",
+      "description": "Implement tool calling architecture and frontend dashboard for Nexa AI",
+      "priority": "high",
+      "status": "in_progress",
+      "dueDate": "2026-10-09",
+      "tags": [
+        "AI",
+        "Project",
+        "Dev"
+      ],
+      "createdAt": "2026-10-07",
+      "subtasks": [
+        {
+          "id": "st_1",
+          "title": "Define requirements",
+          "completed": true
+        },
+        {
+          "id": "st_2",
+          "title": "Design UI",
+          "completed": true
+        },
+        {
+          "id": "st_3",
+          "title": "Create backend & API routes",
+          "completed": true
+        },
+        {
+          "id": "st_4",
+          "title": "Integrate Gemini Tool Calling API",
+          "completed": false
+        },
+        {
+          "id": "st_5",
+          "title": "Test chatbot voice & actions",
+          "completed": false
+        },
+        {
+          "id": "st_6",
+          "title": "Deploy application",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "task_2",
+      "title": "Submit internship report",
+      "description": "Finalize quarterly performance summary and submit to university portal",
+      "priority": "high",
+      "status": "todo",
+      "dueDate": "2026-10-10",
+      "tags": [
+        "Internship",
+        "Academic"
+      ],
+      "createdAt": "2026-10-08",
+      "subtasks": [
+        {
+          "id": "st_21",
+          "title": "Compile activity log",
+          "completed": true
+        },
+        {
+          "id": "st_22",
+          "title": "Get mentor signoff",
+          "completed": false
+        },
+        {
+          "id": "st_23",
+          "title": "Upload PDF to portal",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "task_3",
+      "title": "Study Machine Learning notes",
+      "description": "Review transformers, attention mechanisms and fine-tuning techniques",
+      "priority": "medium",
+      "status": "in_progress",
+      "dueDate": "2026-10-11",
+      "tags": [
+        "Study",
+        "ML"
+      ],
+      "createdAt": "2026-10-06"
+    },
+    {
+      "id": "task_4",
+      "title": "Update software engineer resume",
+      "description": "Add recent full-stack React + Gemini AI projects and published open source tools",
+      "priority": "low",
+      "status": "completed",
+      "dueDate": "2026-10-08",
+      "tags": [
+        "Career"
+      ],
+      "createdAt": "2026-10-04"
+    },
+    {
+      "id": "task_5",
+      "title": "Prepare demo deck for client meeting",
+      "description": "Create slide outline highlighting AI agent features and performance benchmarks",
+      "priority": "high",
+      "status": "todo",
+      "dueDate": "2026-10-09",
+      "tags": [
+        "Client",
+        "Presentation"
+      ],
+      "createdAt": "2026-10-09"
+    }
+  ],
+  "emails": [
+    {
+      "id": "em_1",
+      "senderName": "Prof. Sharma",
+      "senderEmail": "sharma@university.edu",
+      "recipientEmail": "saniyalinkedin613@gmail.com",
+      "subject": "Project Submission & Extension Request",
+      "body": "Hello Saniya, regarding your request for the Python project extension, please ensure you submit the final repository link by tomorrow evening 6 PM. Let me know if you run into any blocker.",
+      "folder": "inbox",
+      "read": false,
+      "starred": true,
+      "timestamp": "10:15 AM Today",
+      "attachments": [
+        {
+          "name": "Project_Rubric_v2.pdf",
+          "size": "1.2 MB"
+        }
+      ]
+    },
+    {
+      "id": "em_2",
+      "senderName": "Rahul Verma",
+      "senderEmail": "rahul.verma@techcorp.com",
+      "recipientEmail": "saniyalinkedin613@gmail.com",
+      "subject": "Meeting Confirmation: AI System Architecture",
+      "body": "Hi Saniya, looking forward to our session tomorrow. Let us discuss integrating vector embeddings and multi-modal tool routing for the platform.",
+      "folder": "inbox",
+      "read": false,
+      "starred": false,
+      "timestamp": "08:30 AM Today"
+    },
+    {
+      "id": "em_3",
+      "senderName": "TechCorp HR Team",
+      "senderEmail": "careers@techcorp.com",
+      "recipientEmail": "saniyalinkedin613@gmail.com",
+      "subject": "Internship Performance Review & Next Steps",
+      "body": "Dear Saniya, congratulations on an exceptional performance during your summer internship. Attached is your official evaluation letter.",
+      "folder": "inbox",
+      "read": true,
+      "starred": true,
+      "timestamp": "Yesterday",
+      "attachments": [
+        {
+          "name": "Internship_Evaluation_Letter.pdf",
+          "size": "450 KB"
+        }
+      ]
+    },
+    {
+      "id": "em_4",
+      "senderName": "Saniya",
+      "senderEmail": "saniyalinkedin613@gmail.com",
+      "recipientEmail": "sharma@university.edu",
+      "subject": "Re: Project Submission Status Update",
+      "body": "Dear Professor Sharma, thank you for the feedback. I am completing the final AI tool calling modules and will submit the project repository before 6 PM tomorrow.",
+      "folder": "sent",
+      "read": true,
+      "starred": false,
+      "timestamp": "Yesterday"
+    },
+    {
+      "id": "em_5",
+      "senderName": "Saniya",
+      "senderEmail": "saniyalinkedin613@gmail.com",
+      "recipientEmail": "team@aistudio.io",
+      "subject": "Draft: Nexa AI Tool Calling Integration Architecture",
+      "body": "Hi Team, here is the draft outline for the new tool-calling agent framework...",
+      "folder": "drafts",
+      "read": true,
+      "starred": false,
+      "timestamp": "2 days ago"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt_1",
+      "title": "Team Sync & Standup",
+      "description": "Daily team sync on Nexa AI sprint goals and backend route setup",
+      "date": "2026-10-09",
+      "startTime": "09:00",
+      "endTime": "09:45",
+      "attendees": [
+        "rahul.verma@techcorp.com",
+        "dev.team@techcorp.com"
+      ],
+      "location": "Google Meet",
+      "reminderMinutesBefore": 15,
+      "color": "#3B82F6"
+    },
+    {
+      "id": "evt_2",
+      "title": "Project Deep Dive & Code Review",
+      "description": "Reviewing AI tool execution engine and React state handlers",
+      "date": "2026-10-09",
+      "startTime": "11:30",
+      "endTime": "12:30",
+      "attendees": [
+        "sharma@university.edu"
+      ],
+      "location": "Lab 402 / Online",
+      "reminderMinutesBefore": 15,
+      "color": "#10B981"
+    },
+    {
+      "id": "evt_3",
+      "title": "Interview Preparation Session",
+      "description": "System design mock interview and algorithm practice",
+      "date": "2026-10-09",
+      "startTime": "14:00",
+      "endTime": "15:00",
+      "attendees": [
+        "mentor@techprep.io"
+      ],
+      "location": "Zoom",
+      "reminderMinutesBefore": 30,
+      "color": "#8B5CF6"
+    },
+    {
+      "id": "evt_4",
+      "title": "Client Meeting — Nexa Product Demo",
+      "description": "Demonstrate natural language email, task, calendar scheduling assistant",
+      "date": "2026-10-09",
+      "startTime": "16:00",
+      "endTime": "17:00",
+      "attendees": [
+        "client@enterprise.com",
+        "rahul.verma@techcorp.com"
+      ],
+      "location": "Google Meet",
+      "reminderMinutesBefore": 30,
+      "color": "#F59E0B"
+    },
+    {
+      "id": "evt_5",
+      "title": "Strategy & Roadmap Planning",
+      "description": "Planning feature roadmap for next sprint",
+      "date": "2026-10-10",
+      "startTime": "15:00",
+      "endTime": "16:00",
+      "attendees": [
+        "rahul.verma@techcorp.com"
+      ],
+      "location": "Google Meet",
+      "reminderMinutesBefore": 30,
+      "color": "#EC4899"
+    }
+  ],
+  "reminders": [
+    {
+      "title": "Call the client",
+      "message": "Discuss the project update with the client.",
+      "startingPoint": "Office",
+      "endingPoint": "Client Location",
+      "datetime": "09:33 PM",
+      "priority": "high",
+      "id": "rem_1791561679134",
+      "completed": false,
+      "phoneDispatched": true,
+      "telegramDispatched": true,
+      "dispatchedAt": "2026-10-09T16:01:49.882Z",
+      "dispatchedChannels": [
+        "telegram"
+      ]
+    },
+    {
+      "title": "⚡ Quick Test Reminder (10s timer)",
+      "datetime": "2026-10-09T16:00:34.097Z",
+      "priority": "high",
+      "id": "rem_1791561624144",
+      "completed": true,
+      "phoneDispatched": true,
+      "telegramDispatched": true,
+      "dispatchedAt": "2026-10-09T16:00:34.834Z",
+      "dispatchedChannels": [
+        "telegram"
+      ]
+    },
+    {
+      "title": "⚡ Quick Test Reminder (5s timer)",
+      "datetime": "2026-10-09T14:53:25.803Z",
+      "priority": "high",
+      "id": "rem_1791557600919",
+      "completed": true,
+      "phoneDispatched": true,
+      "dispatchedAt": "2026-10-09T14:53:26.915Z",
+      "dispatchedChannels": [
+        "whatsapp",
+        "sms"
+      ]
+    },
+    {
+      "title": "⚡ Quick Test Reminder (5s timer)",
+      "datetime": "2026-10-09T14:53:18.247Z",
+      "priority": "high",
+      "id": "rem_1791557593411",
+      "completed": true,
+      "phoneDispatched": true,
+      "dispatchedAt": "2026-10-09T14:53:20.967Z",
+      "dispatchedChannels": [
+        "whatsapp",
+        "sms"
+      ]
+    },
+    {
+      "id": "rem_1",
+      "title": "Submit Python project assignment at 8 PM",
+      "datetime": "2026-10-09T20:00:00",
+      "priority": "high",
+      "completed": true,
+      "relatedType": "task",
+      "relatedId": "task_1"
+    },
+    {
+      "id": "rem_2",
+      "title": "Remind 30 mins before 4 PM Client Meeting",
+      "datetime": "2026-10-09T15:30:00",
+      "priority": "high",
+      "completed": true,
+      "relatedType": "event",
+      "relatedId": "evt_4",
+      "phoneDispatched": true,
+      "dispatchedAt": "2026-10-09T15:30:01.418Z",
+      "dispatchedChannels": [
+        "whatsapp",
+        "sms"
+      ]
+    },
+    {
+      "id": "rem_3",
+      "title": "Review Machine Learning lecture notes",
+      "datetime": "2026-10-10T10:00:00",
+      "priority": "medium",
+      "completed": true
+    }
+  ],
+  "notifications": [
+    {
+      "title": "✅ Telegram Reminder Acknowledged",
+      "message": "\"Call the client\" was acknowledged via Nexa AI Dashboard at 10:57 PM.",
+      "type": "reminder",
+      "link": "/dashboard",
+      "id": "notif_1791998866204",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "✈️ Telegram Alert Sent",
+      "message": "Sent alert to Telegram Chat ID 7159599318 via @NexaTaskAlertsBot. Awaiting acknowledgement.",
+      "type": "reminder",
+      "link": "/dashboard",
+      "id": "notif_1791998841470",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "✅ Telegram Reminder Acknowledged",
+      "message": "User acknowledged \"Call the client\" on Telegram at 10:56 PM.",
+      "type": "reminder",
+      "link": "/dashboard",
+      "id": "notif_1791998794384",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "✈️ Telegram Test Alert Dispatched",
+      "message": "Sent test alert to Telegram Chat ID 7159599318 via @NexaTaskAlertsBot",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791998259169",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "Reminder Due: Call the client",
+      "message": "Your scheduled reminder \"Call the client\" (09:33 PM) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791997351460",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "Reminder Due: Call the client",
+      "message": "Your scheduled reminder \"Call the client\" (09:33 PM) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791997343590",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "Reminder Due: call the client ",
+      "message": "Your scheduled reminder \"call the client \" (21:33pm) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791561780833",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "✈️ Telegram Alert Sent",
+      "message": "Instant Telegram alert dispatched for \"call the client \" to 7159599318",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791561709883",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "Reminder Set",
+      "message": "\"call the client \"",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791561679134",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "Reminder Due: ⚡ Quick Test Reminder (10s timer)",
+      "message": "Your scheduled reminder \"⚡ Quick Test Reminder (10s timer)\" (2026-10-09T16:00:34.097Z) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791561645353",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "Reminder Due: ⚡ Quick Test Reminder (10s timer)",
+      "message": "Your scheduled reminder \"⚡ Quick Test Reminder (10s timer)\" (2026-10-09T16:00:34.097Z) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791561635060",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "✈️ Telegram Alert Sent",
+      "message": "Dispatched reminder \"⚡ Quick Test Reminder (10s timer)\" via Telegram bot (@NexaTaskAlertsBot) to Chat ID 7159599318.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791561634834",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "Reminder Set",
+      "message": "\"⚡ Quick Test Reminder (10s timer)\"",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791561624145",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "Reminder Due: Submit Python project assignment at 8 PM",
+      "message": "Your scheduled reminder \"Submit Python project assignment at 8 PM\" (2026-10-09T20:00:00) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791559860875",
+      "timestamp": "Just now",
+      "read": true
+    },
+    {
+      "title": "Reminder Due: Remind 30 mins before 4 PM Client Meeting",
+      "message": "Your scheduled reminder \"Remind 30 mins before 4 PM Client Meeting\" (2026-10-09T15:30:00) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791559858032",
+      "timestamp": "Just now",
+      "read": true
+    },
+    {
+      "title": "📱 WhatsApp/SMS Sent",
+      "message": "Dispatched alert for \"Remind 30 mins before 4 PM Client Meeting\" via whatsapp & sms to +1 (555) 382-9104.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791559801418",
+      "timestamp": "Just now",
+      "read": true
+    },
+    {
+      "title": "📱 WhatsApp/SMS Sent",
+      "message": "Dispatched alert for \"⚡ Quick Test Reminder (5s timer)\" via whatsapp & sms to +1 (555) 382-9104.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791557606915",
+      "timestamp": "Just now",
+      "read": true
+    },
+    {
+      "title": "Reminder Due: ⚡ Quick Test Reminder (5s timer)",
+      "message": "Your scheduled reminder \"⚡ Quick Test Reminder (5s timer)\" (2026-10-09T14:53:25.803Z) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791557606019",
+      "timestamp": "Just now",
+      "read": true
+    },
+    {
+      "title": "📱 WhatsApp/SMS Sent",
+      "message": "Dispatched alert for \"⚡ Quick Test Reminder (5s timer)\" via whatsapp & sms to +1 (555) 382-9104.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791557600968",
+      "timestamp": "Just now",
+      "read": true
+    },
+    {
+      "title": "Reminder Set",
+      "message": "\"⚡ Quick Test Reminder (5s timer)\"",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791557600919",
+      "timestamp": "Just now",
+      "read": true
+    },
+    {
+      "title": "📱 WhatsApp/SMS Sent",
+      "message": "Dispatched alert for \"⚡ Quick Test Reminder (5s timer)\" via whatsapp & sms to +1 (555) 382-9104.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791557600402",
+      "timestamp": "Just now",
+      "read": true
+    },
+    {
+      "title": "Reminder Due: ⚡ Quick Test Reminder (5s timer)",
+      "message": "Your scheduled reminder \"⚡ Quick Test Reminder (5s timer)\" (2026-10-09T14:53:18.247Z) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791557598577",
+      "timestamp": "Just now",
+      "read": true
+    },
+    {
+      "title": "Reminder Set",
+      "message": "\"⚡ Quick Test Reminder (5s timer)\"",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791557593411",
+      "timestamp": "Just now",
+      "read": true
+    },
+    {
+      "title": "Reminder Due: Remind 30 mins before 4 PM Client Meeting",
+      "message": "Your scheduled reminder \"Remind 30 mins before 4 PM Client Meeting\" (2026-10-09T15:30:00) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791557284180",
+      "timestamp": "Just now",
+      "read": true
+    },
+    {
+      "title": "Reminder Due: Submit Python project assignment at 8 PM",
+      "message": "Your scheduled reminder \"Submit Python project assignment at 8 PM\" (2026-10-09T20:00:00) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1791557284177",
+      "timestamp": "Just now",
+      "read": true
+    },
+    {
+      "id": "notif_1",
+      "title": "Client Meeting in 30 minutes",
+      "message": "Nexa Product Demo with client@enterprise.com starts at 4:00 PM",
+      "type": "meeting",
+      "timestamp": "10 mins ago",
+      "read": true,
+      "link": "/calendar"
+    },
+    {
+      "id": "notif_2",
+      "title": "Task Deadline Approaching",
+      "message": "Prepare demo deck for client meeting is due today",
+      "type": "task",
+      "timestamp": "1 hour ago",
+      "read": true,
+      "link": "/tasks"
+    },
+    {
+      "id": "notif_3",
+      "title": "New Email Received",
+      "message": "Prof. Sharma sent \"Project Submission & Extension Request\"",
+      "type": "email",
+      "timestamp": "2 hours ago",
+      "read": true,
+      "link": "/email"
+    },
+    {
+      "id": "notif_4",
+      "title": "AI Insight Available",
+      "message": "You have a free 2-hour slot this afternoon at 2:00 PM.",
+      "type": "ai",
+      "timestamp": "3 hours ago",
+      "read": true,
+      "link": "/analytics"
+    }
+  ],
+  "chatHistory": [
+    {
+      "id": "msg_1",
+      "role": "assistant",
+      "content": "Hello Saniya! I'm **Nexa AI**, your personal productivity assistant. How can I help you organize your tasks, send emails, schedule meetings, or manage reminders today?",
+      "timestamp": "08:00 AM"
+    },
+    {
+      "role": "user",
+      "content": "what is time",
+      "id": "msg_1791561739626_duvo",
+      "timestamp": "04:02 PM"
+    },
+    {
+      "role": "assistant",
+      "content": "Today is **Friday, October 9, 2026**. \n\nIf you are asking about your **schedule for today**, here is a quick overview of your calendar:\n\n* **09:00 AM:** Team Sync & Standup\n* **11:30 AM:** Project Deep Dive & Code Review\n* **02:00 PM:** Interview Preparation Session\n* **04:00 PM:** Client Meeting — Nexa Product Demo\n\nIf you were asking philosophically or scientifically, **time** is the continuous sequence of existence and events that occurs in an apparently irreversible succession from the past, through the present, into the future.\n\nHow can I assist you with your schedule or tasks today?",
+      "id": "msg_1791561742735_f71e",
+      "timestamp": "04:02 PM"
+    },
+    {
+      "role": "user",
+      "content": "send reminder",
+      "id": "msg_1791997460632_5maj",
+      "timestamp": "05:04 PM"
+    },
+    {
+      "role": "assistant",
+      "content": "I understood your request: \"send reminder\". I can execute actions across your Emails, Tasks, Calendar, and Reminders. Try asking \"Schedule meeting with Rahul tomorrow at 3 PM\" or \"Create task to study Machine Learning\".",
+      "id": "msg_1791997462004_uumn",
+      "timestamp": "05:04 PM"
+    },
+    {
+      "role": "user",
+      "content": "only send to the reminder to telegram",
+      "id": "msg_1791997479670_1ec0",
+      "timestamp": "05:04 PM"
+    },
+    {
+      "role": "assistant",
+      "content": "I understood your request: \"only send to the reminder to telegram\". I can execute actions across your Emails, Tasks, Calendar, and Reminders. Try asking \"Schedule meeting with Rahul tomorrow at 3 PM\" or \"Create task to study Machine Learning\".",
+      "id": "msg_1791997482326_70uw",
+      "timestamp": "05:04 PM"
+    }
+  ],
+  "chatSessions": [
+    {
+      "id": "session_1791997460630",
+      "title": "send reminder",
+      "createdAt": "Oct 14, 2026",
+      "updatedAt": "2026-10-14T17:04:42.327Z",
+      "pinned": false,
+      "messageCount": 7,
+      "messages": [
+        {
+          "id": "msg_1",
+          "role": "assistant",
+          "content": "Hello Saniya! I'm **Nexa AI**, your personal productivity assistant. How can I help you organize your tasks, send emails, schedule meetings, or manage reminders today?",
+          "timestamp": "08:00 AM"
+        },
+        {
+          "role": "user",
+          "content": "what is time",
+          "id": "msg_1791561739626_duvo",
+          "timestamp": "04:02 PM"
+        },
+        {
+          "role": "assistant",
+          "content": "Today is **Friday, October 9, 2026**. \n\nIf you are asking about your **schedule for today**, here is a quick overview of your calendar:\n\n* **09:00 AM:** Team Sync & Standup\n* **11:30 AM:** Project Deep Dive & Code Review\n* **02:00 PM:** Interview Preparation Session\n* **04:00 PM:** Client Meeting — Nexa Product Demo\n\nIf you were asking philosophically or scientifically, **time** is the continuous sequence of existence and events that occurs in an apparently irreversible succession from the past, through the present, into the future.\n\nHow can I assist you with your schedule or tasks today?",
+          "id": "msg_1791561742735_f71e",
+          "timestamp": "04:02 PM"
+        },
+        {
+          "role": "user",
+          "content": "send reminder",
+          "id": "msg_1791997460632_5maj",
+          "timestamp": "05:04 PM"
+        },
+        {
+          "role": "assistant",
+          "content": "I understood your request: \"send reminder\". I can execute actions across your Emails, Tasks, Calendar, and Reminders. Try asking \"Schedule meeting with Rahul tomorrow at 3 PM\" or \"Create task to study Machine Learning\".",
+          "id": "msg_1791997462004_uumn",
+          "timestamp": "05:04 PM"
+        },
+        {
+          "role": "user",
+          "content": "only send to the reminder to telegram",
+          "id": "msg_1791997479670_1ec0",
+          "timestamp": "05:04 PM"
+        },
+        {
+          "role": "assistant",
+          "content": "I understood your request: \"only send to the reminder to telegram\". I can execute actions across your Emails, Tasks, Calendar, and Reminders. Try asking \"Schedule meeting with Rahul tomorrow at 3 PM\" or \"Create task to study Machine Learning\".",
+          "id": "msg_1791997482326_70uw",
+          "timestamp": "05:04 PM"
+        }
+      ]
+    },
+    {
+      "id": "session_1791561739624",
+      "title": "what is time",
+      "createdAt": "Oct 9, 2026",
+      "updatedAt": "2026-10-09T16:02:22.735Z",
+      "pinned": false,
+      "messageCount": 3,
+      "messages": [
+        {
+          "id": "msg_1",
+          "role": "assistant",
+          "content": "Hello Saniya! I'm **Nexa AI**, your personal productivity assistant. How can I help you organize your tasks, send emails, schedule meetings, or manage reminders today?",
+          "timestamp": "08:00 AM"
+        },
+        {
+          "role": "user",
+          "content": "what is time",
+          "id": "msg_1791561739626_duvo",
+          "timestamp": "04:02 PM"
+        },
+        {
+          "role": "assistant",
+          "content": "Today is **Friday, October 9, 2026**. \n\nIf you are asking about your **schedule for today**, here is a quick overview of your calendar:\n\n* **09:00 AM:** Team Sync & Standup\n* **11:30 AM:** Project Deep Dive & Code Review\n* **02:00 PM:** Interview Preparation Session\n* **04:00 PM:** Client Meeting — Nexa Product Demo\n\nIf you were asking philosophically or scientifically, **time** is the continuous sequence of existence and events that occurs in an apparently irreversible succession from the past, through the present, into the future.\n\nHow can I assist you with your schedule or tasks today?",
+          "id": "msg_1791561742735_f71e",
+          "timestamp": "04:02 PM"
+        }
+      ]
+    },
+    {
+      "id": "session_1",
+      "title": "AI Project Task Breakdown & Schedule",
+      "createdAt": "Oct 9, 2026",
+      "updatedAt": "2026-10-09T14:47:57.673Z",
+      "pinned": true,
+      "messageCount": 4,
+      "messages": [
+        {
+          "id": "msg_s1_1",
+          "role": "user",
+          "content": "Can you break down my AI chatbot task and schedule dedicated coding blocks for today and tomorrow?",
+          "timestamp": "10:15 AM"
+        },
+        {
+          "id": "msg_s1_2",
+          "role": "assistant",
+          "content": "I've analyzed your task **Complete AI chatbot application**. Here is the structured roadmap:\n\n1. **Subtask 1:** Integrate Gemini Tool Calling API (High priority)\n2. **Subtask 2:** Build Voice & Chat UI with persistent history\n3. **Subtask 3:** Connect Calendar & Task sync engine\n\nI've scheduled a 2-hour deep work focus session for today from 2:00 PM to 4:00 PM and added reminder alerts.",
+          "timestamp": "10:15 AM",
+          "toolCall": {
+            "name": "create_calendar_event",
+            "args": {
+              "title": "Deep Work: AI Chatbot Development",
+              "date": "today",
+              "startTime": "14:00",
+              "endTime": "16:00"
+            },
+            "status": "completed",
+            "result": {
+              "success": true,
+              "message": "Scheduled deep work block on Calendar."
+            }
+          }
+        },
+        {
+          "id": "msg_s1_3",
+          "role": "user",
+          "content": "Great! Also remind me 15 minutes before the session starts.",
+          "timestamp": "10:16 AM"
+        },
+        {
+          "id": "msg_s1_4",
+          "role": "assistant",
+          "content": "Done! I have set a high-priority reminder for 1:45 PM today with browser chime notification.",
+          "timestamp": "10:16 AM",
+          "toolCall": {
+            "name": "create_reminder",
+            "args": {
+              "title": "Upcoming Deep Work Session in 15 mins",
+              "datetime": "2026-10-09T13:45:00",
+              "priority": "high"
+            },
+            "status": "completed",
+            "result": {
+              "success": true,
+              "message": "Reminder set successfully."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "session_2",
+      "title": "Rahul Client Meeting & Schedule Sync",
+      "createdAt": "Oct 8, 2026",
+      "updatedAt": "2026-10-08T14:47:57.673Z",
+      "pinned": false,
+      "messageCount": 3,
+      "messages": [
+        {
+          "id": "msg_s2_1",
+          "role": "user",
+          "content": "Schedule a meeting with Rahul tomorrow at 3 PM and draft an invitation email.",
+          "timestamp": "Yesterday at 3:30 PM"
+        },
+        {
+          "id": "msg_s2_2",
+          "role": "assistant",
+          "content": "I have scheduled **Meeting with Rahul** for tomorrow at 3:00 PM - 4:00 PM on Google Meet, and drafted the confirmation email.",
+          "timestamp": "Yesterday at 3:30 PM",
+          "toolCall": {
+            "name": "create_calendar_event",
+            "args": {
+              "title": "Meeting with Rahul",
+              "date": "tomorrow",
+              "startTime": "15:00",
+              "endTime": "16:00",
+              "attendees": [
+                "rahul.verma@techcorp.com"
+              ]
+            },
+            "status": "completed"
+          }
+        },
+        {
+          "id": "msg_s2_3",
+          "role": "assistant",
+          "content": "I've prepared the email to **rahul.verma@techcorp.com**. Would you like me to dispatch it?",
+          "timestamp": "Yesterday at 3:31 PM",
+          "confirmationRequired": true,
+          "toolCall": {
+            "name": "send_email",
+            "args": {
+              "recipientEmail": "rahul.verma@techcorp.com",
+              "subject": "Sync on Project Deliverables",
+              "body": "Hi Rahul, confirming our scheduled sync tomorrow at 3 PM."
+            },
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "session_3",
+      "title": "Machine Learning Study & Weekly Goals",
+      "createdAt": "Oct 6, 2026",
+      "updatedAt": "2026-10-06T14:47:57.673Z",
+      "pinned": false,
+      "messageCount": 2,
+      "messages": [
+        {
+          "id": "msg_s3_1",
+          "role": "user",
+          "content": "Create a study task for Machine Learning transformer architectures and plan my weekly study intervals.",
+          "timestamp": "3 days ago"
+        },
+        {
+          "id": "msg_s3_2",
+          "role": "assistant",
+          "content": "Created task **Study Machine Learning notes** with due date in 2 days. Suggested 45-minute Pomodoro intervals each evening.",
+          "timestamp": "3 days ago",
+          "toolCall": {
+            "name": "create_task",
+            "args": {
+              "title": "Study Machine Learning notes",
+              "priority": "medium",
+              "dueDate": "2026-10-11",
+              "tags": [
+                "Study",
+                "ML"
+              ]
+            },
+            "status": "completed"
+          }
+        }
+      ]
+    }
+  ],
+  "actionHistory": [
+    {
+      "action": "Reminder Acknowledged (Dashboard)",
+      "category": "reminder",
+      "details": "Manual acknowledgement on Dashboard for \"Call the client\" at 10:57 PM",
+      "status": "success",
+      "meta": {
+        "notificationId": "notif_tg_1791998841028_mkf4a",
+        "reminderId": "rem_test_1791998841028"
+      },
+      "id": "act_1791998866205_9zdw",
+      "timestamp": "10/14/26, 5:27 PM"
+    },
+    {
+      "action": "Telegram Reminder Acknowledged (@NexaTaskAlertsBot)",
+      "category": "reminder",
+      "details": "Confirmed by Saniya (987654321) at 10:56 PM for \"Call the client\"",
+      "status": "success",
+      "meta": {
+        "notificationId": "notif_test_1791998791620",
+        "reminderId": "rem_test_123",
+        "acknowledgedTime": "10:56 PM",
+        "chatId": 987654321
+      },
+      "id": "act_1791998794384_n2tn",
+      "timestamp": "10/14/26, 5:26 PM"
+    },
+    {
+      "action": "Chat Session Created",
+      "category": "ai",
+      "details": "Created new conversation session \"send reminder\"",
+      "status": "success",
+      "id": "act_1791997460631_dtcc",
+      "timestamp": "10/14/26, 5:04 PM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"Call the client\"",
+      "id": "act_1791997351462_l7j1",
+      "timestamp": "10/14/26, 5:02 PM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"Call the client\"",
+      "id": "act_1791997343592_clgs",
+      "timestamp": "10/14/26, 5:02 PM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"call the client \"",
+      "id": "act_1791561780831_oq4q",
+      "timestamp": "10/9/26, 4:03 PM"
+    },
+    {
+      "action": "Chat Session Created",
+      "category": "ai",
+      "details": "Created new conversation session \"what is time\"",
+      "status": "success",
+      "id": "act_1791561739625_h7kn",
+      "timestamp": "10/9/26, 4:02 PM"
+    },
+    {
+      "action": "Reminder Created",
+      "category": "reminder",
+      "details": "Created reminder \"call the client \"",
+      "status": "success",
+      "meta": {
+        "reminderId": "rem_1791561679134"
+      },
+      "id": "act_1791561679135_0zb1",
+      "timestamp": "10/9/26, 4:01 PM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"⚡ Quick Test Reminder (10s timer)\"",
+      "id": "act_1791561645389_dtkp",
+      "timestamp": "10/9/26, 4:00 PM"
+    },
+    {
+      "action": "Reminder Completed",
+      "category": "reminder",
+      "details": "Completed reminder \"⚡ Quick Test Reminder (10s timer)\"",
+      "status": "success",
+      "id": "act_1791561645265_6alo",
+      "timestamp": "10/9/26, 4:00 PM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"⚡ Quick Test Reminder (10s timer)\"",
+      "id": "act_1791561635063_zrn1",
+      "timestamp": "10/9/26, 4:00 PM"
+    },
+    {
+      "action": "Telegram Reminder Alert (@NexaTaskAlertsBot)",
+      "category": "reminder",
+      "details": "Auto-sent Telegram alert to Chat ID 7159599318 for \"⚡ Quick Test Reminder (10s timer)\"",
+      "status": "success",
+      "meta": {
+        "reminderId": "rem_1791561624144",
+        "channels": [
+          "telegram"
+        ],
+        "logId": "tg_1791561634358_8m8t3"
+      },
+      "id": "act_1791561634835_5q21",
+      "timestamp": "10/9/26, 4:00 PM"
+    },
+    {
+      "action": "Reminder Created",
+      "category": "reminder",
+      "details": "Created reminder \"⚡ Quick Test Reminder (10s timer)\"",
+      "status": "success",
+      "meta": {
+        "reminderId": "rem_1791561624144"
+      },
+      "id": "act_1791561624145_k20m",
+      "timestamp": "10/9/26, 4:00 PM"
+    },
+    {
+      "action": "Reminder Completed",
+      "category": "reminder",
+      "details": "Completed reminder \"Review Machine Learning lecture notes\"",
+      "status": "success",
+      "id": "act_1791559949716_ibc9",
+      "timestamp": "10/9/26, 3:32 PM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"Submit Python project assignment at 8 PM\"",
+      "id": "act_1791559860871_lpo1",
+      "timestamp": "10/9/26, 3:31 PM"
+    },
+    {
+      "action": "Reminder Completed",
+      "category": "reminder",
+      "details": "Completed reminder \"Submit Python project assignment at 8 PM\"",
+      "status": "success",
+      "id": "act_1791559860759_fwns",
+      "timestamp": "10/9/26, 3:31 PM"
+    },
+    {
+      "action": "Reminder Completed",
+      "category": "reminder",
+      "details": "Completed reminder \"⚡ Quick Test Reminder (5s timer)\"",
+      "status": "success",
+      "id": "act_1791559859511_cdlu",
+      "timestamp": "10/9/26, 3:30 PM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"Remind 30 mins before 4 PM Client Meeting\"",
+      "id": "act_1791559858034_5xy6",
+      "timestamp": "10/9/26, 3:30 PM"
+    },
+    {
+      "action": "Reminder Completed",
+      "category": "reminder",
+      "details": "Completed reminder \"Remind 30 mins before 4 PM Client Meeting\"",
+      "status": "success",
+      "id": "act_1791559857989_haci",
+      "timestamp": "10/9/26, 3:30 PM"
+    },
+    {
+      "action": "Reminder Completed",
+      "category": "reminder",
+      "details": "Completed reminder \"⚡ Quick Test Reminder (5s timer)\"",
+      "status": "success",
+      "id": "act_1791559856662_qr05",
+      "timestamp": "10/9/26, 3:30 PM"
+    },
+    {
+      "action": "Phone Reminder Alert (WHATSAPP, SMS)",
+      "category": "reminder",
+      "details": "Auto-sent whatsapp & sms message to +1 (555) 382-9104 for \"Remind 30 mins before 4 PM Client Meeting\"",
+      "status": "success",
+      "meta": {
+        "reminderId": "rem_2",
+        "channels": [
+          "whatsapp",
+          "sms"
+        ]
+      },
+      "id": "act_1791559801418_e43u",
+      "timestamp": "10/9/26, 3:30 PM"
+    },
+    {
+      "action": "Phone Reminder Alert (WHATSAPP, SMS)",
+      "category": "reminder",
+      "details": "Auto-sent whatsapp & sms message to +1 (555) 382-9104 for \"⚡ Quick Test Reminder (5s timer)\"",
+      "status": "success",
+      "meta": {
+        "reminderId": "rem_1791557600919",
+        "channels": [
+          "whatsapp",
+          "sms"
+        ]
+      },
+      "id": "act_1791557606916_sfn3",
+      "timestamp": "10/9/26, 2:53 PM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"⚡ Quick Test Reminder (5s timer)\"",
+      "id": "act_1791557606021_cmzy",
+      "timestamp": "10/9/26, 2:53 PM"
+    },
+    {
+      "action": "Phone Reminder Alert (WHATSAPP, SMS)",
+      "category": "reminder",
+      "details": "Auto-sent whatsapp & sms message to +1 (555) 382-9104 for \"⚡ Quick Test Reminder (5s timer)\"",
+      "status": "success",
+      "meta": {
+        "reminderId": "rem_1791557593411",
+        "channels": [
+          "whatsapp",
+          "sms"
+        ]
+      },
+      "id": "act_1791557600968_ndgu",
+      "timestamp": "10/9/26, 2:53 PM"
+    },
+    {
+      "action": "Reminder Created",
+      "category": "reminder",
+      "details": "Created reminder \"⚡ Quick Test Reminder (5s timer)\"",
+      "status": "success",
+      "meta": {
+        "reminderId": "rem_1791557600919"
+      },
+      "id": "act_1791557600920_i89v",
+      "timestamp": "10/9/26, 2:53 PM"
+    },
+    {
+      "action": "Phone Reminder Alert (WHATSAPP, SMS)",
+      "category": "reminder",
+      "details": "Auto-sent whatsapp & sms message to +1 (555) 382-9104 for \"⚡ Quick Test Reminder (5s timer)\"",
+      "status": "success",
+      "meta": {
+        "reminderId": "rem_1791557593411",
+        "channels": [
+          "whatsapp",
+          "sms"
+        ]
+      },
+      "id": "act_1791557600402_6ofc",
+      "timestamp": "10/9/26, 2:53 PM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"⚡ Quick Test Reminder (5s timer)\"",
+      "id": "act_1791557598581_r5mm",
+      "timestamp": "10/9/26, 2:53 PM"
+    },
+    {
+      "action": "Reminder Created",
+      "category": "reminder",
+      "details": "Created reminder \"⚡ Quick Test Reminder (5s timer)\"",
+      "status": "success",
+      "meta": {
+        "reminderId": "rem_1791557593411"
+      },
+      "id": "act_1791557593412_9i5q",
+      "timestamp": "10/9/26, 2:53 PM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"Remind 30 mins before 4 PM Client Meeting\"",
+      "id": "act_1791557284178_qh18",
+      "timestamp": "10/9/26, 2:48 PM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"Submit Python project assignment at 8 PM\"",
+      "id": "act_1791557284174_0cvc",
+      "timestamp": "10/9/26, 2:48 PM"
+    },
+    {
+      "id": "act_1",
+      "action": "Email Dispatched",
+      "category": "email",
+      "details": "Sent \"Project Submission Status Update\" to Prof. Sharma (sharma@university.edu)",
+      "timestamp": "Yesterday at 4:30 PM",
+      "status": "success"
+    },
+    {
+      "id": "act_2",
+      "action": "Calendar Event Scheduled",
+      "category": "calendar",
+      "details": "Scheduled \"Client Meeting — Nexa Product Demo\" for today at 4:00 PM",
+      "timestamp": "Today at 09:15 AM",
+      "status": "success"
+    },
+    {
+      "id": "act_3",
+      "action": "Task Completed",
+      "category": "task",
+      "details": "Marked \"Update software engineer resume\" as completed",
+      "timestamp": "Yesterday at 2:10 PM",
+      "status": "success"
+    },
+    {
+      "id": "act_4",
+      "action": "Reminder Created",
+      "category": "reminder",
+      "details": "Created high-priority reminder for Python project submission",
+      "timestamp": "Today at 10:00 AM",
+      "status": "success"
+    }
+  ],
+  "phoneDispatchLogs": [
+    {
+      "id": "sms_1791559801078_av4vj",
+      "reminderId": "rem_2",
+      "reminderTitle": "Remind 30 mins before 4 PM Client Meeting",
+      "channel": "sms",
+      "recipientPhone": "+1 (555) 382-9104",
+      "message": "[Nexa AI] 🚨 REMINDER DUE: \"Remind 30 mins before 4 PM Client Meeting\" (2026-10-09T15:30:00). Priority: HIGH. Sent at 03:30 PM.",
+      "status": "delivered",
+      "timestamp": "2026-10-09T15:30:01.417Z",
+      "provider": "nexa_sms_carrier (simulated)",
+      "actionUrl": "sms:+15553829104?body=%5BNexa%20AI%5D%20%F0%9F%9A%A8%20REMINDER%20DUE%3A%20%22Remind%2030%20mins%20before%204%20PM%20Client%20Meeting%22%20(2026-10-09T15%3A30%3A00).%20Priority%3A%20HIGH.%20Sent%20at%2003%3A30%20PM."
+    },
+    {
+      "id": "wa_1791559800707_kntkv",
+      "reminderId": "rem_2",
+      "reminderTitle": "Remind 30 mins before 4 PM Client Meeting",
+      "channel": "whatsapp",
+      "recipientPhone": "+1 (555) 382-9104",
+      "message": "🔔 *NEXA AI REMINDER ALERT* 🚨\n\n*Reminder:* Remind 30 mins before 4 PM Client Meeting\n*Scheduled:* 2026-10-09T15:30:00\n*Priority:* HIGH\n*Triggered At:* 03:30 PM\n\n✨ _Sent automatically to your phone by Nexa AI Personal Assistant._",
+      "status": "delivered",
+      "timestamp": "2026-10-09T15:30:01.078Z",
+      "provider": "nexa_whatsapp_gateway (simulated)",
+      "actionUrl": "https://wa.me/15553829104?text=%F0%9F%94%94%20*NEXA%20AI%20REMINDER%20ALERT*%20%F0%9F%9A%A8%0A%0A*Reminder%3A*%20Remind%2030%20mins%20before%204%20PM%20Client%20Meeting%0A*Scheduled%3A*%202026-10-09T15%3A30%3A00%0A*Priority%3A*%20HIGH%0A*Triggered%20At%3A*%2003%3A30%20PM%0A%0A%E2%9C%A8%20_Sent%20automatically%20to%20your%20phone%20by%20Nexa%20AI%20Personal%20Assistant._"
+    },
+    {
+      "id": "sms_1791557606651_cv94s",
+      "reminderId": "rem_1791557600919",
+      "reminderTitle": "⚡ Quick Test Reminder (5s timer)",
+      "channel": "sms",
+      "recipientPhone": "+1 (555) 382-9104",
+      "message": "[Nexa AI] 🚨 REMINDER DUE: \"⚡ Quick Test Reminder (5s timer)\" (2026-10-09T14:53:25.803Z). Priority: HIGH. Sent at 02:53 PM.",
+      "status": "delivered",
+      "timestamp": "2026-10-09T14:53:26.915Z",
+      "provider": "nexa_sms_carrier (simulated)",
+      "actionUrl": "sms:+15553829104?body=%5BNexa%20AI%5D%20%F0%9F%9A%A8%20REMINDER%20DUE%3A%20%22%E2%9A%A1%20Quick%20Test%20Reminder%20(5s%20timer)%22%20(2026-10-09T14%3A53%3A25.803Z).%20Priority%3A%20HIGH.%20Sent%20at%2002%3A53%20PM."
+    },
+    {
+      "id": "wa_1791557606037_91v6v",
+      "reminderId": "rem_1791557600919",
+      "reminderTitle": "⚡ Quick Test Reminder (5s timer)",
+      "channel": "whatsapp",
+      "recipientPhone": "+1 (555) 382-9104",
+      "message": "🔔 *NEXA AI REMINDER ALERT* 🚨\n\n*Reminder:* ⚡ Quick Test Reminder (5s timer)\n*Scheduled:* 2026-10-09T14:53:25.803Z\n*Priority:* HIGH\n*Triggered At:* 02:53 PM\n\n✨ _Sent automatically to your phone by Nexa AI Personal Assistant._",
+      "status": "delivered",
+      "timestamp": "2026-10-09T14:53:26.651Z",
+      "provider": "nexa_whatsapp_gateway (simulated)",
+      "actionUrl": "https://wa.me/15553829104?text=%F0%9F%94%94%20*NEXA%20AI%20REMINDER%20ALERT*%20%F0%9F%9A%A8%0A%0A*Reminder%3A*%20%E2%9A%A1%20Quick%20Test%20Reminder%20(5s%20timer)%0A*Scheduled%3A*%202026-10-09T14%3A53%3A25.803Z%0A*Priority%3A*%20HIGH%0A*Triggered%20At%3A*%2002%3A53%20PM%0A%0A%E2%9C%A8%20_Sent%20automatically%20to%20your%20phone%20by%20Nexa%20AI%20Personal%20Assistant._"
+    },
+    {
+      "id": "sms_1791557600297_g92ms",
+      "reminderId": "rem_1791557593411",
+      "reminderTitle": "⚡ Quick Test Reminder (5s timer)",
+      "channel": "sms",
+      "recipientPhone": "+1 (555) 382-9104",
+      "message": "[Nexa AI] 🚨 REMINDER DUE: \"⚡ Quick Test Reminder (5s timer)\" (2026-10-09T14:53:18.247Z). Priority: HIGH. Sent at 02:53 PM.",
+      "status": "delivered",
+      "timestamp": "2026-10-09T14:53:20.967Z",
+      "provider": "nexa_sms_carrier (simulated)",
+      "actionUrl": "sms:+15553829104?body=%5BNexa%20AI%5D%20%F0%9F%9A%A8%20REMINDER%20DUE%3A%20%22%E2%9A%A1%20Quick%20Test%20Reminder%20(5s%20timer)%22%20(2026-10-09T14%3A53%3A18.247Z).%20Priority%3A%20HIGH.%20Sent%20at%2002%3A53%20PM."
+    },
+    {
+      "id": "sms_1791557599772_vmroj",
+      "reminderId": "rem_1791557593411",
+      "reminderTitle": "⚡ Quick Test Reminder (5s timer)",
+      "channel": "sms",
+      "recipientPhone": "+1 (555) 382-9104",
+      "message": "[Nexa AI] 🚨 REMINDER DUE: \"⚡ Quick Test Reminder (5s timer)\" (2026-10-09T14:53:18.247Z). Priority: HIGH. Sent at 02:53 PM.",
+      "status": "delivered",
+      "timestamp": "2026-10-09T14:53:20.401Z",
+      "provider": "nexa_sms_carrier (simulated)",
+      "actionUrl": "sms:+15553829104?body=%5BNexa%20AI%5D%20%F0%9F%9A%A8%20REMINDER%20DUE%3A%20%22%E2%9A%A1%20Quick%20Test%20Reminder%20(5s%20timer)%22%20(2026-10-09T14%3A53%3A18.247Z).%20Priority%3A%20HIGH.%20Sent%20at%2002%3A53%20PM."
+    },
+    {
+      "id": "wa_1791557600032_g324a",
+      "reminderId": "rem_1791557593411",
+      "reminderTitle": "⚡ Quick Test Reminder (5s timer)",
+      "channel": "whatsapp",
+      "recipientPhone": "+1 (555) 382-9104",
+      "message": "🔔 *NEXA AI REMINDER ALERT* 🚨\n\n*Reminder:* ⚡ Quick Test Reminder (5s timer)\n*Scheduled:* 2026-10-09T14:53:18.247Z\n*Priority:* HIGH\n*Triggered At:* 02:53 PM\n\n✨ _Sent automatically to your phone by Nexa AI Personal Assistant._",
+      "status": "delivered",
+      "timestamp": "2026-10-09T14:53:20.296Z",
+      "provider": "nexa_whatsapp_gateway (simulated)",
+      "actionUrl": "https://wa.me/15553829104?text=%F0%9F%94%94%20*NEXA%20AI%20REMINDER%20ALERT*%20%F0%9F%9A%A8%0A%0A*Reminder%3A*%20%E2%9A%A1%20Quick%20Test%20Reminder%20(5s%20timer)%0A*Scheduled%3A*%202026-10-09T14%3A53%3A18.247Z%0A*Priority%3A*%20HIGH%0A*Triggered%20At%3A*%2002%3A53%20PM%0A%0A%E2%9C%A8%20_Sent%20automatically%20to%20your%20phone%20by%20Nexa%20AI%20Personal%20Assistant._"
+    },
+    {
+      "id": "wa_1791557599032_s1ubd",
+      "reminderId": "rem_1791557593411",
+      "reminderTitle": "⚡ Quick Test Reminder (5s timer)",
+      "channel": "whatsapp",
+      "recipientPhone": "+1 (555) 382-9104",
+      "message": "🔔 *NEXA AI REMINDER ALERT* 🚨\n\n*Reminder:* ⚡ Quick Test Reminder (5s timer)\n*Scheduled:* 2026-10-09T14:53:18.247Z\n*Priority:* HIGH\n*Triggered At:* 02:53 PM\n\n✨ _Sent automatically to your phone by Nexa AI Personal Assistant._",
+      "status": "delivered",
+      "timestamp": "2026-10-09T14:53:19.771Z",
+      "provider": "nexa_whatsapp_gateway (simulated)",
+      "actionUrl": "https://wa.me/15553829104?text=%F0%9F%94%94%20*NEXA%20AI%20REMINDER%20ALERT*%20%F0%9F%9A%A8%0A%0A*Reminder%3A*%20%E2%9A%A1%20Quick%20Test%20Reminder%20(5s%20timer)%0A*Scheduled%3A*%202026-10-09T14%3A53%3A18.247Z%0A*Priority%3A*%20HIGH%0A*Triggered%20At%3A*%2002%3A53%20PM%0A%0A%E2%9C%A8%20_Sent%20automatically%20to%20your%20phone%20by%20Nexa%20AI%20Personal%20Assistant._"
+    }
+  ],
+  "telegramDispatchLogs": [
+    {
+      "id": "tg_1791998841029_qxd35",
+      "reminderTitle": "Call the client",
+      "chatId": "7159599318",
+      "recipientName": "Saniya",
+      "message": "🔔 NEXA AI TASK & REMINDER ALERT 🚨\n\n📌 Title: Call the client\n📝 Task Message: Discuss the project update with the client.\n📍 Starting Point: Office\n🏁 Ending Point: Client Location\n⏰ Scheduled: 09:33 PM\n⚡ Priority: HIGH\n🕒 Triggered At: 10:57 PM\n\n✨ Sent automatically by your Nexa AI Personal Productivity Assistant.\n🤖 Bot: @NexaTaskAlertsBot",
+      "status": "sent",
+      "timestamp": "2026-10-14T17:27:21.469Z",
+      "telegramMessageId": 18
+    },
+    {
+      "id": "tg_1791998258722_ffla6",
+      "reminderTitle": "Call the client",
+      "chatId": "7159599318",
+      "recipientName": "Saniya",
+      "message": "🔔 NEXA AI TASK & REMINDER ALERT 🚨\n\n📌 Title: Call the client\n📝 Task Message: Discuss the project update with the client.\n⏰ Scheduled: 10:47 PM\n⚡ Priority: HIGH\n🕒 Triggered At: 10:47 PM\n\n✨ Sent automatically by your Nexa AI Personal Productivity Assistant.\n🤖 Bot: @NexaTaskAlertsBot",
+      "status": "delivered",
+      "timestamp": "2026-10-14T17:17:39.168Z",
+      "telegramMessageId": 17
+    },
+    {
+      "id": "tg_1791997414417_grrph",
+      "reminderTitle": "Telegram Alert",
+      "chatId": "7159599318",
+      "recipientName": "Saniya",
+      "message": "⏰ *Upcoming Nexa AI Reminders (1):*\n\n1. 🔔 *Call the client*\n   📅 Time: `09:33 PM`\n",
+      "status": "delivered",
+      "timestamp": "2026-10-14T17:03:35.359Z",
+      "telegramMessageId": 16
+    },
+    {
+      "id": "tg_1791997406413_7s9x4",
+      "reminderTitle": "Telegram Alert",
+      "chatId": "7159599318",
+      "recipientName": "Saniya",
+      "message": "📋 *Your Current Nexa AI Tasks (4):*\n\n1. 🔴 *Complete AI chatbot application* (Due: 2026-10-09)\n2. 🔴 *Submit internship report* (Due: 2026-10-10)\n3. 🟡 *Study Machine Learning notes* (Due: 2026-10-11)\n4. 🔴 *Prepare demo deck for client meeting* (Due: 2026-10-09)\n",
+      "status": "delivered",
+      "timestamp": "2026-10-14T17:03:27.421Z",
+      "telegramMessageId": 14
+    },
+    {
+      "id": "tg_1791997398411_vpvpc",
+      "reminderTitle": "Telegram Alert",
+      "chatId": "7159599318",
+      "recipientName": "Saniya",
+      "message": "👋 *Hello Saniya Tamboli! Welcome to Nexa AI Alerts.*\n\n✅ *Connected Successfully!*\nYour Telegram Chat ID is: `7159599318`\n\nFrom now on, all your scheduled Nexa AI task deadlines and reminder alerts will be delivered right to this conversation instantly! 🚀\n\n*Available Bot Commands:*\n• /tasks — View your current pending tasks\n• /reminders — View your upcoming reminders\n• /chatid — Display your unique Telegram Chat ID\n• /status — Check Nexa AI Assistant link status",
+      "status": "delivered",
+      "timestamp": "2026-10-14T17:03:19.837Z",
+      "telegramMessageId": 12
+    }
+  ],
+  "telegramNotifications": [
+    {
+      "id": "notif_tg_1791998841028_mkf4a",
+      "reminderId": "rem_test_1791998841028",
+      "taskTitle": "Call the client",
+      "taskMessage": "Discuss the project update with the client.",
+      "startingPoint": "Office",
+      "endingPoint": "Client Location",
+      "priority": "HIGH",
+      "scheduledTime": "09:33 PM",
+      "triggeredTime": "10:57 PM",
+      "chatId": "7159599318",
+      "status": "acknowledged",
+      "createdAt": "2026-10-14T17:27:21.028Z",
+      "telegramMessageId": 18,
+      "sentAt": "2026-10-14T17:27:21.469Z",
+      "sentTimestamp": "10:57 PM",
+      "acknowledgedAt": "2026-10-14T17:27:46.203Z",
+      "acknowledgedTime": "10:57 PM",
+      "acknowledgedBy": {
+        "username": "dashboard_user",
+        "firstName": "Dashboard User"
+      }
+    }
+  ],
+  "settings": [
+    {
+      "theme": "dark",
+      "aiModel": "gemini-3.6-flash",
+      "responseStyle": "concise",
+      "memoryEnabled": true,
+      "notifications": {
+        "email": true,
+        "task": true,
+        "calendar": true,
+        "ai": true,
+        "phone": false,
+        "telegram": true,
+        "whatsapp": false,
+        "sms": false
+      },
+      "phoneSettings": {
+        "enabled": true,
+        "phoneNumber": "+1 (555) 382-9104",
+        "channels": "both",
+        "countryCode": "+1",
+        "autoAlertOnDue": true
+      },
+      "telegramSettings": {
+        "enabled": true,
+        "botToken": "8711965885:AAEtgT1w0S1NK_aH_aH_djPV_JWr0Pz5e5s",
+        "botUsername": "NexaTaskAlertsBot",
+        "chatId": "7159599318",
+        "telegramUsername": "Satamboli613",
+        "autoAlertOnDue": true,
+        "lastActiveAt": "2026-10-14T17:03:18.410Z"
+      },
+      "integrations": {
+        "gmail": true,
+        "googleCalendar": true,
+        "googleTasks": true
+      }
+    }
+  ]
+}
