@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
-import { db } from './server/db';
+import { db, verifyAuthToken, createAuthToken, defaultTelegramSettings } from './server/db';
 import {
   processChat,
   generateAIEmail,
@@ -87,11 +87,13 @@ function startReminderScheduler() {
           try {
             // Dispatch Telegram Alert via @NexaTaskAlertsBot with interactive acknowledgement tracking
             let tgResult: { success: boolean; log: any; notification: TelegramReminderNotification } | null = null;
-            if (telegramSettings && telegramSettings.enabled !== false) {
-              tgResult = await dispatchReminderTelegramAlert(rem, telegramSettings);
+            const reminderUserSettings = db.getSettings(rem.userId);
+            const effectiveTelegramSettings = reminderUserSettings.telegramSettings || telegramSettings;
+            if (effectiveTelegramSettings && effectiveTelegramSettings.enabled !== false) {
+              tgResult = await dispatchReminderTelegramAlert(rem, effectiveTelegramSettings);
             }
 
-            const tgTarget = telegramSettings?.chatId ? `Chat ID ${telegramSettings.chatId}` : `@${DEFAULT_TELEGRAM_BOT_USERNAME}`;
+            const tgTarget = effectiveTelegramSettings?.chatId ? `Chat ID ${effectiveTelegramSettings.chatId}` : `@${DEFAULT_TELEGRAM_BOT_USERNAME}`;
             db.addNotification({
               title: `✈️ Telegram Reminder Alert Sent`,
               message: `Dispatched reminder "${rem.title}" to Telegram (@${DEFAULT_TELEGRAM_BOT_USERNAME}). Awaiting user acknowledgement.`,
@@ -137,29 +139,113 @@ async function startServer() {
   // Start Telegram bot listener
   startTelegramPollingWorker();
 
-  // --- AUTH ENDPOINTS ---
-  app.get('/api/auth/me', (req, res) => {
-    res.json({ user: db.getUser() });
+  // --- AUTH MIDDLEWARE (Extracts Bearer token or x-user-id header) ---
+  app.use((req: any, _res: any, next: any) => {
+    const authHeader = req.headers.authorization;
+    let userId: string | null = null;
+    let user: any = null;
+
+    if (authHeader && typeof authHeader === 'string' && authHeader.startsWith('Bearer ')) {
+      const token = authHeader.substring(7);
+      const verified = verifyAuthToken(token);
+      if (verified && verified.userId) {
+        userId = verified.userId;
+        user = db.getUserById(userId);
+      }
+    }
+
+    if (!userId && req.headers['x-user-id']) {
+      const headerId = String(req.headers['x-user-id']);
+      const foundUser = db.getUserById(headerId);
+      if (foundUser) {
+        userId = foundUser.id;
+        user = foundUser;
+      }
+    }
+
+    if (!userId || !user) {
+      user = db.getUser();
+      userId = user.id;
+    }
+
+    req.userId = userId;
+    req.currentUser = user;
+    next();
   });
 
-  app.get('/api/auth/google-config', (req, res) => {
+  // --- AUTH ENDPOINTS ---
+  app.get('/api/auth/me', (req: any, res) => {
+    const user = req.currentUser || db.getUser(req.userId);
+    res.json({ success: true, user });
+  });
+
+  app.post('/api/auth/register', (req, res) => {
+    try {
+      const { name, email, password, role } = req.body;
+      const result = db.registerUser(name, email, password, role);
+      res.json({
+        success: true,
+        user: result.user,
+        token: result.token,
+        message: `Account created successfully. Welcome, ${result.user.name}!`
+      });
+    } catch (err: any) {
+      res.status(400).json({ success: false, error: err.message || 'Registration failed' });
+    }
+  });
+
+  app.post('/api/auth/login', (req, res) => {
+    try {
+      const { email, password } = req.body;
+      const result = db.loginUser(email, password);
+      res.json({
+        success: true,
+        user: result.user,
+        token: result.token,
+        message: `Welcome back, ${result.user.name}!`
+      });
+    } catch (err: any) {
+      res.status(401).json({ success: false, error: err.message || 'Invalid credentials' });
+    }
+  });
+
+  app.post('/api/auth/demo', (_req, res) => {
+    try {
+      const result = db.loginDemoUser();
+      res.json({
+        success: true,
+        user: result.user,
+        token: result.token,
+        message: 'Logged in as Demo User (Saniya)'
+      });
+    } catch (err: any) {
+      const user = db.getUser();
+      res.json({
+        success: true,
+        user,
+        token: createAuthToken(user),
+        message: 'Logged in as Demo User (Saniya)'
+      });
+    }
+  });
+
+  app.post('/api/auth/logout', (_req, res) => {
+    res.json({ success: true, message: 'Logged out successfully' });
+  });
+
+  app.get('/api/auth/google-config', (_req, res) => {
     res.json({
       clientId: process.env.GOOGLE_CLIENT_ID || process.env.VITE_GOOGLE_CLIENT_ID || '',
       configured: true
     });
   });
 
-  app.post('/api/auth/demo', (req, res) => {
-    const user = db.getUser();
-    res.json({ success: true, user, message: 'LoggedIn as Demo User Saniya' });
+  // --- TASKS ENDPOINTS (SEPARATE PER USER) ---
+  app.get('/api/tasks', (req: any, res) => {
+    res.json(db.getTasks(req.userId));
   });
 
-  // --- TASKS ENDPOINTS ---
-  app.get('/api/tasks', (req, res) => {
-    res.json(db.getTasks());
-  });
-
-  app.post('/api/tasks', (req, res) => {
+  app.post('/api/tasks', (req: any, res) => {
     const {
       title,
       description,
@@ -195,7 +281,7 @@ async function startServer() {
       dueDate: dueDate || new Date().toISOString().split('T')[0],
       tags: tags || [],
       subtasks: subtasks || []
-    });
+    }, req.userId);
     res.json(task);
   });
 
@@ -354,12 +440,12 @@ async function startServer() {
     res.json({ success });
   });
 
-  // --- REMINDERS ENDPOINTS ---
-  app.get('/api/reminders', (req, res) => {
-    res.json(db.getReminders());
+  // --- REMINDERS ENDPOINTS (SEPARATE PER USER) ---
+  app.get('/api/reminders', (req: any, res) => {
+    res.json(db.getReminders(req.userId));
   });
 
-  app.post('/api/reminders', (req, res) => {
+  app.post('/api/reminders', (req: any, res) => {
     const {
       title,
       datetime,
@@ -401,7 +487,7 @@ async function startServer() {
       endLocation: cleanEnd,
       sendTelegram: sendTelegram !== undefined ? sendTelegram : true,
       telegramChatId
-    });
+    }, req.userId);
     res.json(reminder);
   });
 
@@ -799,12 +885,12 @@ async function startServer() {
     res.json({ success: true, logs });
   });
 
-  // --- NOTIFICATIONS ENDPOINTS ---
-  app.get('/api/notifications', (req, res) => {
-    res.json(db.getNotifications());
+  // --- NOTIFICATIONS ENDPOINTS (PER USER) ---
+  app.get('/api/notifications', (req: any, res) => {
+    res.json(db.getNotifications(req.userId));
   });
 
-  app.post('/api/notifications', (req, res) => {
+  app.post('/api/notifications', (req: any, res) => {
     const { title, message, type, link } = req.body;
     if (!title) {
       res.status(400).json({ error: 'Notification title required' });
@@ -815,7 +901,7 @@ async function startServer() {
       message: message || '',
       type: type || 'reminder',
       link: link || '/reminders'
-    });
+    }, req.userId);
     res.status(201).json(notif);
   });
 
@@ -945,13 +1031,13 @@ async function startServer() {
     res.json(db.search(q));
   });
 
-  // --- SETTINGS ENDPOINTS ---
-  app.get('/api/settings', (req, res) => {
-    res.json(db.getSettings());
+  // --- SETTINGS ENDPOINTS (PER USER) ---
+  app.get('/api/settings', (req: any, res) => {
+    res.json(db.getSettings(req.userId));
   });
 
-  app.put('/api/settings', (req, res) => {
-    const updated = db.updateSettings(req.body);
+  app.put('/api/settings', (req: any, res) => {
+    const updated = db.updateSettings(req.body, req.userId);
     res.json(updated);
   });
 

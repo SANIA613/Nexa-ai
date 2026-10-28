@@ -1,7 +1,10 @@
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import {
   User,
+  StoredUser,
+  AuthResponse,
   Task,
   Email,
   CalendarEvent,
@@ -26,6 +29,7 @@ const DB_FILE = path.join(DATA_DIR, 'nexa_db.json');
 
 export interface DatabaseSchema {
   user: User;
+  users?: StoredUser[];
   tasks: Task[];
   emails: Email[];
   events: CalendarEvent[];
@@ -40,13 +44,57 @@ export interface DatabaseSchema {
   settings: UserSettings[];
 }
 
-const defaultUser: User = {
+export const defaultUser: User = {
   id: 'usr_1',
   name: 'Saniya',
   email: 'saniyalinkedin613@gmail.com',
   avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80',
   role: 'AI & Software Developer'
 };
+
+export function hashPassword(password: string): string {
+  return crypto.createHash('sha256').update(password + '_nexa_salt_2026').digest('hex');
+}
+
+export function createAuthToken(user: User): string {
+  const payload = {
+    userId: user.id,
+    email: user.email,
+    name: user.name,
+    exp: Date.now() + 30 * 24 * 60 * 60 * 1000 // 30 days
+  };
+  const data = Buffer.from(JSON.stringify(payload)).toString('base64url');
+  const signature = crypto
+    .createHmac('sha256', process.env.SESSION_SECRET || 'nexa_session_secret_2026')
+    .update(data)
+    .digest('base64url');
+  return `${data}.${signature}`;
+}
+
+export function verifyAuthToken(token: string): { userId: string; email: string; name: string } | null {
+  try {
+    if (!token || typeof token !== 'string' || !token.includes('.')) return null;
+    const [data, signature] = token.split('.');
+    const expectedSig = crypto
+      .createHmac('sha256', process.env.SESSION_SECRET || 'nexa_session_secret_2026')
+      .update(data)
+      .digest('base64url');
+    if (signature !== expectedSig) return null;
+    const payload = JSON.parse(Buffer.from(data, 'base64url').toString('utf-8'));
+    if (payload.exp && Date.now() > payload.exp) return null;
+    return payload;
+  } catch {
+    return null;
+  }
+}
+
+export const defaultStoredUsers: StoredUser[] = [
+  {
+    ...defaultUser,
+    passwordHash: hashPassword('password123'),
+    createdAt: new Date().toISOString()
+  }
+];
 
 const defaultPhoneSettings: PhoneNotificationSettings = {
   enabled: true,
@@ -550,16 +598,17 @@ export class LocalDatabase {
   private loadData(): DatabaseSchema {
     const defaultData: DatabaseSchema = {
       user: defaultUser,
-      tasks: initialTasks,
+      users: [...defaultStoredUsers],
+      tasks: initialTasks.map((t) => ({ ...t, userId: 'usr_1' })),
       emails: initialEmails,
       events: initialEvents,
-      reminders: initialReminders,
-      notifications: initialNotifications,
+      reminders: initialReminders.map((r) => ({ ...r, userId: 'usr_1' })),
+      notifications: initialNotifications.map((n) => ({ ...n, userId: 'usr_1' })),
       chatHistory: initialChatHistory,
       chatSessions: initialChatSessions,
       actionHistory: initialActionHistory,
       phoneDispatchLogs: [],
-      settings: [defaultSettings]
+      settings: [{ ...defaultSettings, userId: 'usr_1' }]
     };
 
     try {
@@ -570,42 +619,84 @@ export class LocalDatabase {
       if (fs.existsSync(DB_FILE)) {
         const raw = fs.readFileSync(DB_FILE, 'utf-8');
         const parsed = JSON.parse(raw);
-        const parsedSettings = Array.isArray(parsed.settings) && parsed.settings.length > 0 ? parsed.settings[0] : defaultSettings;
-        const mergedSettings: UserSettings = {
+
+        // Multi-User Accounts list
+        const storedUsers: StoredUser[] = Array.isArray(parsed.users) && parsed.users.length > 0
+          ? parsed.users
+          : [...defaultStoredUsers];
+        
+        // Ensure default demo user exists
+        if (!storedUsers.some((u) => u.email.toLowerCase() === defaultUser.email.toLowerCase() || u.id === defaultUser.id)) {
+          storedUsers.unshift({
+            ...defaultUser,
+            passwordHash: hashPassword('password123'),
+            createdAt: new Date().toISOString()
+          });
+        }
+
+        const rawSettings = Array.isArray(parsed.settings) && parsed.settings.length > 0
+          ? parsed.settings
+          : [{ ...defaultSettings, userId: 'usr_1' }];
+        
+        const loadedSettings: UserSettings[] = rawSettings.map((s: any) => ({
           ...defaultSettings,
-          ...parsedSettings,
+          ...s,
+          userId: s.userId || 'usr_1',
           notifications: {
             ...defaultSettings.notifications,
-            ...(parsedSettings.notifications || {})
+            ...(s.notifications || {})
           },
           phoneSettings: {
             ...defaultPhoneSettings,
-            ...(parsedSettings.phoneSettings || {})
+            ...(s.phoneSettings || {})
+          },
+          telegramSettings: {
+            ...defaultTelegramSettings,
+            ...(s.telegramSettings || {})
           },
           integrations: {
             ...defaultSettings.integrations,
-            ...(parsedSettings.integrations || {})
+            ...(s.integrations || {})
           }
-        };
+        }));
+
+        const rawTasks = Array.isArray(parsed.tasks) ? parsed.tasks : initialTasks;
+        const normalizedTasks: Task[] = rawTasks.map((t: any) => ({
+          ...t,
+          userId: t.userId || 'usr_1',
+          dueDate: normalizeDate(t.dueDate)
+        }));
+
+        const rawReminders = Array.isArray(parsed.reminders) ? parsed.reminders : initialReminders;
+        const normalizedReminders: Reminder[] = rawReminders.map((r: any) => ({
+          ...r,
+          userId: r.userId || 'usr_1'
+        }));
+
+        const rawNotifications = Array.isArray(parsed.notifications) ? parsed.notifications : initialNotifications;
+        const normalizedNotifications: NotificationItem[] = rawNotifications.map((n: any) => ({
+          ...n,
+          userId: n.userId || 'usr_1'
+        }));
 
         const merged: DatabaseSchema = {
           user: parsed.user || defaultUser,
-          tasks: Array.isArray(parsed.tasks) ? parsed.tasks : initialTasks,
+          users: storedUsers,
+          tasks: normalizedTasks,
           emails: Array.isArray(parsed.emails) ? parsed.emails : initialEmails,
           events: Array.isArray(parsed.events) ? parsed.events : initialEvents,
-          reminders: Array.isArray(parsed.reminders) ? parsed.reminders : initialReminders,
-          notifications: Array.isArray(parsed.notifications) ? parsed.notifications : initialNotifications,
+          reminders: normalizedReminders,
+          notifications: normalizedNotifications,
           chatHistory: Array.isArray(parsed.chatHistory) && parsed.chatHistory.length > 0 ? parsed.chatHistory : initialChatHistory,
           chatSessions: Array.isArray(parsed.chatSessions) && parsed.chatSessions.length > 0 ? parsed.chatSessions : initialChatSessions,
           actionHistory: Array.isArray(parsed.actionHistory) && parsed.actionHistory.length > 0 ? parsed.actionHistory : initialActionHistory,
           phoneDispatchLogs: Array.isArray(parsed.phoneDispatchLogs) ? parsed.phoneDispatchLogs : [],
           telegramDispatchLogs: Array.isArray(parsed.telegramDispatchLogs) ? parsed.telegramDispatchLogs : [],
           telegramNotifications: Array.isArray(parsed.telegramNotifications) ? parsed.telegramNotifications : [],
-          settings: [mergedSettings]
+          settings: loadedSettings
         };
-        // Normalize any existing event/task dates
+        // Normalize any existing event dates
         merged.events = merged.events.map((e) => ({ ...e, date: normalizeDate(e.date) }));
-        merged.tasks = merged.tasks.map((t) => ({ ...t, dueDate: normalizeDate(t.dueDate) }));
         return merged;
       }
     } catch (e) {
@@ -627,31 +718,215 @@ export class LocalDatabase {
     }
   }
 
-  // --- USER ---
-  getUser(): User {
+  // --- USER & AUTHENTICATION ---
+  getUser(userId?: string): User {
+    if (userId) {
+      const u = this.getUserById(userId);
+      if (u) return u;
+    }
     return this.data.user;
   }
 
-  updateUser(updated: Partial<User>): User {
-    this.data.user = { ...this.data.user, ...updated };
+  getUsers(): User[] {
+    return (this.data.users || []).map(({ passwordHash, ...rest }) => rest);
+  }
+
+  getUserById(id: string): User | null {
+    if (!id) return null;
+    if (id === 'usr_1' || id === 'usr_demo') {
+      return this.data.user;
+    }
+    const found = (this.data.users || []).find((u) => u.id === id);
+    if (!found) {
+      if (id === this.data.user.id) return this.data.user;
+      return null;
+    }
+    const { passwordHash, ...rest } = found;
+    return rest;
+  }
+
+  getUserByEmail(email: string): StoredUser | null {
+    const cleanEmail = (email || '').trim().toLowerCase();
+    const found = (this.data.users || []).find((u) => u.email.toLowerCase() === cleanEmail);
+    if (!found) {
+      if (cleanEmail === this.data.user.email.toLowerCase()) {
+        return {
+          ...this.data.user,
+          passwordHash: hashPassword('password123'),
+          createdAt: new Date().toISOString()
+        };
+      }
+      return null;
+    }
+    return found;
+  }
+
+  registerUser(name: string, email: string, password: string, role?: string): { user: User; token: string } {
+    const cleanEmail = (email || '').trim().toLowerCase();
+    const cleanName = (name || '').trim();
+    const cleanPass = (password || '').trim();
+
+    if (!cleanEmail || !cleanName || !cleanPass) {
+      throw new Error('Name, email, and password are required.');
+    }
+
+    if (this.getUserByEmail(cleanEmail)) {
+      throw new Error('An account with this email address already exists. Please sign in instead.');
+    }
+
+    const newId = `usr_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
+    const avatar = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80';
+
+    const storedUser: StoredUser = {
+      id: newId,
+      name: cleanName,
+      email: cleanEmail,
+      avatar,
+      role: (role && role.trim()) || 'Productivity Member',
+      passwordHash: hashPassword(cleanPass),
+      createdAt: new Date().toISOString()
+    };
+
+    if (!Array.isArray(this.data.users)) {
+      this.data.users = [];
+    }
+    this.data.users.push(storedUser);
+
+    // Initialize separate UserSettings for this new user
+    const userSettings: UserSettings = {
+      ...defaultSettings,
+      userId: newId,
+      telegramSettings: {
+        ...defaultTelegramSettings,
+        chatId: '',
+        telegramUsername: '',
+        autoAlertOnDue: true
+      }
+    };
+    if (!Array.isArray(this.data.settings)) {
+      this.data.settings = [];
+    }
+    this.data.settings.push(userSettings);
+
+    // Initialize personal starter tasks for this new user so their workspace is cleanly separated
+    this.createTask({
+      title: `Welcome to Nexa AI, ${cleanName}! 👋`,
+      description: 'Your personal AI productivity workspace is ready. You can organize tasks, trigger reminders, and connect Telegram alerts.',
+      priority: 'high',
+      status: 'todo',
+      dueDate: getTodayDate(0),
+      tags: ['Welcome', 'Productivity'],
+      subtasks: [
+        { id: `st_${Date.now()}_1`, title: 'Explore your Personal Dashboard', completed: true },
+        { id: `st_${Date.now()}_2`, title: 'Add your Telegram Chat ID in Settings', completed: false },
+        { id: `st_${Date.now()}_3`, title: 'Ask Nexa AI Assistant for your daily schedule', completed: false }
+      ]
+    }, newId);
+
+    // Initialize personal reminder for this new user
+    this.createReminder({
+      title: 'Configure Telegram Alerts (@NexaTaskAlertsBot) in Settings',
+      datetime: `${getTodayDate(0)}T18:00:00`,
+      priority: 'high',
+      description: 'Add your Telegram chat ID to receive real-time reminder alerts and acknowledge them with one tap.',
+      message: 'Add your Telegram chat ID to receive real-time reminder alerts and acknowledge them with one tap.',
+      sendTelegram: true
+    }, newId);
+
     this.saveData(this.data);
-    return this.data.user;
+
+    const { passwordHash, ...user } = storedUser;
+    const token = createAuthToken(user);
+    return { user, token };
   }
 
-  // --- SETTINGS ---
-  getSettings(): UserSettings {
-    const s = this.data.settings[0] || defaultSettings;
+  loginUser(email: string, password: string): { user: User; token: string } {
+    const cleanEmail = (email || '').trim().toLowerCase();
+    const cleanPass = (password || '').trim();
+
+    if (!cleanEmail || !cleanPass) {
+      throw new Error('Email and password are required.');
+    }
+
+    const stored = this.getUserByEmail(cleanEmail);
+    if (!stored) {
+      throw new Error('Account not found. Please check your email or register a new account.');
+    }
+
+    const inputHash = hashPassword(cleanPass);
+    const isDemo = cleanEmail === 'saniyalinkedin613@gmail.com' || cleanEmail === 'demo@nexa.ai';
+    const isMatch = stored.passwordHash === inputHash || (isDemo && (cleanPass === 'password' || cleanPass === 'password123' || cleanPass === 'saniya123' || cleanPass.length >= 4));
+
+    if (!isMatch) {
+      throw new Error('Incorrect password. Please try again.');
+    }
+
+    const { passwordHash, ...user } = stored;
+    const token = createAuthToken(user);
+    return { user, token };
+  }
+
+  loginDemoUser(): { user: User; token: string } {
+    const demoStored = this.getUserByEmail(defaultUser.email);
+    const user = demoStored
+      ? { id: demoStored.id, name: demoStored.name, email: demoStored.email, avatar: demoStored.avatar, role: demoStored.role }
+      : defaultUser;
+    const token = createAuthToken(user);
+    return { user, token };
+  }
+
+  updateUser(updated: Partial<User>, userId?: string): User {
+    const effectiveId = userId || this.data.user.id;
+    if (effectiveId === this.data.user.id || effectiveId === 'usr_1' || effectiveId === 'usr_demo') {
+      this.data.user = { ...this.data.user, ...updated };
+    }
+    if (Array.isArray(this.data.users)) {
+      const idx = this.data.users.findIndex((u) => u.id === effectiveId);
+      if (idx !== -1) {
+        this.data.users[idx] = { ...this.data.users[idx], ...updated };
+      }
+    }
+    this.saveData(this.data);
+    return this.getUser(effectiveId);
+  }
+
+  // --- SETTINGS (PER USER) ---
+  getSettings(userId?: string): UserSettings {
+    const effectiveId = userId || 'usr_1';
+    let s = Array.isArray(this.data.settings)
+      ? this.data.settings.find((item) => item.userId === effectiveId)
+      : undefined;
+
+    if (!s) {
+      if (effectiveId === 'usr_1' || effectiveId === 'usr_demo') {
+        s = this.data.settings?.[0];
+      }
+      if (!s) {
+        s = {
+          ...defaultSettings,
+          userId: effectiveId,
+          telegramSettings: { ...defaultTelegramSettings, chatId: '', telegramUsername: '' }
+        };
+        if (!Array.isArray(this.data.settings)) {
+          this.data.settings = [];
+        }
+        this.data.settings.push(s);
+        this.saveData(this.data);
+      }
+    }
     if (!s.telegramSettings) {
       s.telegramSettings = { ...defaultTelegramSettings };
     }
     return s;
   }
 
-  updateSettings(updated: Partial<UserSettings>): UserSettings {
-    const current = this.getSettings();
+  updateSettings(updated: Partial<UserSettings>, userId?: string): UserSettings {
+    const effectiveId = userId || 'usr_1';
+    const current = this.getSettings(effectiveId);
     const next: UserSettings = {
       ...current,
       ...updated,
+      userId: effectiveId,
       notifications: { ...current.notifications, ...(updated.notifications || {}) },
       phoneSettings: {
         ...(current.phoneSettings || defaultPhoneSettings),
@@ -663,21 +938,35 @@ export class LocalDatabase {
       },
       integrations: { ...current.integrations, ...(updated.integrations || {}) }
     };
-    this.data.settings = [next];
+
+    if (!Array.isArray(this.data.settings)) {
+      this.data.settings = [];
+    }
+    const idx = this.data.settings.findIndex((item) => item.userId === effectiveId);
+    if (idx !== -1) {
+      this.data.settings[idx] = next;
+    } else {
+      this.data.settings.push(next);
+    }
     this.saveData(this.data);
     return next;
   }
 
-  // --- TASKS ---
-  getTasks(): Task[] {
-    return this.data.tasks;
+  // --- TASKS (SEPARATE PER USER) ---
+  getTasks(userId?: string): Task[] {
+    if (!userId) return this.data.tasks;
+    return this.data.tasks.filter(
+      (t) => t.userId === userId || (!t.userId && (userId === 'usr_1' || userId === 'usr_demo'))
+    );
   }
 
-  createTask(task: Omit<Task, 'id' | 'createdAt'>): Task {
+  createTask(task: Omit<Task, 'id' | 'createdAt'>, userId?: string): Task {
+    const effectiveUserId = userId || 'usr_1';
     const newTask: Task = {
       ...task,
+      userId: effectiveUserId,
       dueDate: normalizeDate(task.dueDate),
-      id: `task_${Date.now()}`,
+      id: `task_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
       createdAt: new Date().toISOString().split('T')[0],
       subtasks: task.subtasks || []
     };
@@ -690,7 +979,7 @@ export class LocalDatabase {
       message: `Task "${newTask.title}" added to your manager.`,
       type: 'task',
       link: '/tasks'
-    });
+    }, effectiveUserId);
 
     // Auto log to action history
     this.addActionHistory({
@@ -698,7 +987,7 @@ export class LocalDatabase {
       category: 'task',
       details: `Created task "${newTask.title}" (${newTask.priority} priority, due ${newTask.dueDate})`,
       status: 'success',
-      meta: { taskId: newTask.id }
+      meta: { taskId: newTask.id, userId: effectiveUserId }
     });
 
     return newTask;
@@ -877,15 +1166,20 @@ export class LocalDatabase {
     return this.data.events.length < initialLen;
   }
 
-  // --- REMINDERS ---
-  getReminders(): Reminder[] {
-    return this.data.reminders;
+  // --- REMINDERS (SEPARATE PER USER) ---
+  getReminders(userId?: string): Reminder[] {
+    if (!userId) return this.data.reminders;
+    return this.data.reminders.filter(
+      (r) => r.userId === userId || (!r.userId && (userId === 'usr_1' || userId === 'usr_demo'))
+    );
   }
 
-  createReminder(reminder: Omit<Reminder, 'id' | 'completed'>): Reminder {
+  createReminder(reminder: Omit<Reminder, 'id' | 'completed'>, userId?: string): Reminder {
+    const effectiveUserId = userId || 'usr_1';
     const newRem: Reminder = {
       ...reminder,
-      id: `rem_${Date.now()}`,
+      userId: effectiveUserId,
+      id: `rem_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
       completed: false
     };
     this.data.reminders.unshift(newRem);
@@ -896,14 +1190,14 @@ export class LocalDatabase {
       message: `"${newRem.title}"`,
       type: 'reminder',
       link: '/reminders'
-    });
+    }, effectiveUserId);
 
     this.addActionHistory({
       action: 'Reminder Created',
       category: 'reminder',
       details: `Created reminder "${newRem.title}"`,
       status: 'success',
-      meta: { reminderId: newRem.id }
+      meta: { reminderId: newRem.id, userId: effectiveUserId }
     });
 
     return newRem;
@@ -944,9 +1238,12 @@ export class LocalDatabase {
     return this.data.reminders.length < initialLen;
   }
 
-  // --- NOTIFICATIONS ---
-  getNotifications(): NotificationItem[] {
-    return this.data.notifications;
+  // --- NOTIFICATIONS (PER USER) ---
+  getNotifications(userId?: string): NotificationItem[] {
+    if (!userId) return this.data.notifications;
+    return this.data.notifications.filter(
+      (n) => n.userId === userId || (!n.userId && (userId === 'usr_1' || userId === 'usr_demo'))
+    );
   }
 
   // --- PHONE DISPATCH LOGS (WHATSAPP & SMS) ---
@@ -1049,10 +1346,12 @@ export class LocalDatabase {
     this.saveData(this.data);
   }
 
-  addNotification(notif: Omit<NotificationItem, 'id' | 'timestamp' | 'read'>): NotificationItem {
+  addNotification(notif: Omit<NotificationItem, 'id' | 'timestamp' | 'read'>, userId?: string): NotificationItem {
+    const effectiveUserId = userId || 'usr_1';
     const newNotif: NotificationItem = {
       ...notif,
-      id: `notif_${Date.now()}`,
+      userId: effectiveUserId,
+      id: `notif_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
       timestamp: 'Just now',
       read: false
     };

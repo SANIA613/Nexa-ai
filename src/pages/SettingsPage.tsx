@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useApp } from '../context/AppContext';
 import { TelegramAlertConfigCard } from '../components/TelegramAlertConfigCard';
@@ -34,12 +34,21 @@ export const SettingsPage: React.FC = () => {
     setSoundAlertsEnabled
   } = useApp();
 
-  const [name, setName] = useState(user?.name || 'Saniya');
-  const [email, setEmail] = useState(user?.email || 'saniyalinkedin613@gmail.com');
-  const [role, setRole] = useState(user?.role || 'Productivity Lead');
+  const [name, setName] = useState(user?.name || '');
+  const [email, setEmail] = useState(user?.email || '');
+  const [role, setRole] = useState(user?.role || 'Productivity Member');
   const [avatar, setAvatar] = useState(
-    user?.avatar || 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150'
+    user?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'
   );
+
+  useEffect(() => {
+    if (user) {
+      setName(user.name || '');
+      setEmail(user.email || '');
+      setRole(user.role || 'Productivity Member');
+      if (user.avatar) setAvatar(user.avatar);
+    }
+  }, [user]);
 
   const [aiModel, setAiModel] = useState('gemini-2.5-flash');
   const [responseTone, setResponseTone] = useState('professional');

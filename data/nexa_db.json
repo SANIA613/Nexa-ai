@@ -6,7 +6,71 @@
     "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
     "role": "AI & Software Developer"
   },
+  "users": [
+    {
+      "id": "usr_1",
+      "name": "Saniya",
+      "email": "saniyalinkedin613@gmail.com",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+      "role": "AI & Software Developer",
+      "passwordHash": "66a478d94967a7726d44ba29377c5bde3004425a64d3a998b7662319cf485e90",
+      "createdAt": "2026-10-15T08:58:35.578Z"
+    },
+    {
+      "id": "usr_1792054725054_fnpz",
+      "name": "Alex Morgan",
+      "email": "alex@example.com",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      "role": "Lead Designer",
+      "passwordHash": "2d76d6d0a0bd68a144dfdf287846b9716e91f27be262b50af0586cc0fdbf8bf8",
+      "createdAt": "2026-10-15T08:58:45.055Z"
+    }
+  ],
   "tasks": [
+    {
+      "title": "Design user interface mockups",
+      "description": "",
+      "message": "",
+      "priority": "high",
+      "status": "todo",
+      "dueDate": "2026-10-18",
+      "tags": [],
+      "subtasks": [],
+      "userId": "usr_1792054725054_fnpz",
+      "id": "task_1792054782614_kyhm",
+      "createdAt": "2026-10-15"
+    },
+    {
+      "title": "Welcome to Nexa AI, Alex Morgan! 👋",
+      "description": "Your personal AI productivity workspace is ready. You can organize tasks, trigger reminders, and connect Telegram alerts.",
+      "priority": "high",
+      "status": "todo",
+      "dueDate": "2026-10-15",
+      "tags": [
+        "Welcome",
+        "Productivity"
+      ],
+      "subtasks": [
+        {
+          "id": "st_1792054725055_1",
+          "title": "Explore your Personal Dashboard",
+          "completed": true
+        },
+        {
+          "id": "st_1792054725055_2",
+          "title": "Add your Telegram Chat ID in Settings",
+          "completed": false
+        },
+        {
+          "id": "st_1792054725055_3",
+          "title": "Ask Nexa AI Assistant for your daily schedule",
+          "completed": false
+        }
+      ],
+      "userId": "usr_1792054725054_fnpz",
+      "id": "task_1792054725055_vyoc",
+      "createdAt": "2026-10-15"
+    },
     {
       "id": "task_1",
       "title": "Complete AI chatbot application",
@@ -51,7 +115,8 @@
           "title": "Deploy application",
           "completed": false
         }
-      ]
+      ],
+      "userId": "usr_1"
     },
     {
       "id": "task_2",
@@ -81,7 +146,8 @@
           "title": "Upload PDF to portal",
           "completed": false
         }
-      ]
+      ],
+      "userId": "usr_1"
     },
     {
       "id": "task_3",
@@ -94,7 +160,8 @@
         "Study",
         "ML"
       ],
-      "createdAt": "2026-10-06"
+      "createdAt": "2026-10-06",
+      "userId": "usr_1"
     },
     {
       "id": "task_4",
@@ -106,7 +173,8 @@
       "tags": [
         "Career"
       ],
-      "createdAt": "2026-10-04"
+      "createdAt": "2026-10-04",
+      "userId": "usr_1"
     },
     {
       "id": "task_5",
@@ -119,7 +187,8 @@
         "Client",
         "Presentation"
       ],
-      "createdAt": "2026-10-09"
+      "createdAt": "2026-10-09",
+      "userId": "usr_1"
     }
   ],
   "emails": [
@@ -272,6 +341,33 @@
   ],
   "reminders": [
     {
+      "title": "Configure Telegram Alerts (@NexaTaskAlertsBot) in Settings",
+      "datetime": "2026-10-15T18:00:00",
+      "priority": "high",
+      "description": "Add your Telegram chat ID to receive real-time reminder alerts and acknowledge them with one tap.",
+      "message": "Add your Telegram chat ID to receive real-time reminder alerts and acknowledge them with one tap.",
+      "sendTelegram": true,
+      "userId": "usr_1792054725054_fnpz",
+      "id": "rem_1792054725063_rvzs",
+      "completed": false
+    },
+    {
+      "title": "⚡ Quick Test Reminder (5s timer)",
+      "datetime": "2026-10-15T08:04:59.010Z",
+      "scheduledEpoch": 1792051499010,
+      "priority": "high",
+      "sendTelegram": true,
+      "id": "rem_1792051494388",
+      "completed": false,
+      "phoneDispatched": true,
+      "telegramDispatched": true,
+      "dispatchedAt": "2026-10-15T08:04:59.347Z",
+      "dispatchedChannels": [
+        "telegram"
+      ],
+      "userId": "usr_1"
+    },
+    {
       "title": "Call the client",
       "message": "Discuss the project update with the client.",
       "startingPoint": "Office",
@@ -285,7 +381,8 @@
       "dispatchedAt": "2026-10-09T16:01:49.882Z",
       "dispatchedChannels": [
         "telegram"
-      ]
+      ],
+      "userId": "usr_1"
     },
     {
       "title": "⚡ Quick Test Reminder (10s timer)",
@@ -298,7 +395,8 @@
       "dispatchedAt": "2026-10-09T16:00:34.834Z",
       "dispatchedChannels": [
         "telegram"
-      ]
+      ],
+      "userId": "usr_1"
     },
     {
       "title": "⚡ Quick Test Reminder (5s timer)",
@@ -311,7 +409,8 @@
       "dispatchedChannels": [
         "whatsapp",
         "sms"
-      ]
+      ],
+      "userId": "usr_1"
     },
     {
       "title": "⚡ Quick Test Reminder (5s timer)",
@@ -324,7 +423,8 @@
       "dispatchedChannels": [
         "whatsapp",
         "sms"
-      ]
+      ],
+      "userId": "usr_1"
     },
     {
       "id": "rem_1",
@@ -333,7 +433,8 @@
       "priority": "high",
       "completed": true,
       "relatedType": "task",
-      "relatedId": "task_1"
+      "relatedId": "task_1",
+      "userId": "usr_1"
     },
     {
       "id": "rem_2",
@@ -348,17 +449,119 @@
       "dispatchedChannels": [
         "whatsapp",
         "sms"
-      ]
+      ],
+      "userId": "usr_1"
     },
     {
       "id": "rem_3",
       "title": "Review Machine Learning lecture notes",
       "datetime": "2026-10-10T10:00:00",
       "priority": "medium",
-      "completed": true
+      "completed": true,
+      "userId": "usr_1"
     }
   ],
   "notifications": [
+    {
+      "title": "New Task Created",
+      "message": "Task \"Design user interface mockups\" added to your manager.",
+      "type": "task",
+      "link": "/tasks",
+      "userId": "usr_1792054725054_fnpz",
+      "id": "notif_1792054782614_nss9",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "Reminder Due: ⚡ Quick Test Reminder (5s timer)",
+      "message": "Your scheduled reminder \"⚡ Quick Test Reminder (5s timer)\" (2026-10-15T08:04:59.010Z) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "userId": "usr_1",
+      "id": "notif_1792054766535_tjk8",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "Reminder Set",
+      "message": "\"Configure Telegram Alerts (@NexaTaskAlertsBot) in Settings\"",
+      "type": "reminder",
+      "link": "/reminders",
+      "userId": "usr_1792054725054_fnpz",
+      "id": "notif_1792054725063_5o9z",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "New Task Created",
+      "message": "Task \"Welcome to Nexa AI, Alex Morgan! 👋\" added to your manager.",
+      "type": "task",
+      "link": "/tasks",
+      "userId": "usr_1792054725054_fnpz",
+      "id": "notif_1792054725060_edin",
+      "timestamp": "Just now",
+      "read": false
+    },
+    {
+      "title": "Reminder Due: ⚡ Quick Test Reminder (5s timer)",
+      "message": "Your scheduled reminder \"⚡ Quick Test Reminder (5s timer)\" (2026-10-15T08:04:59.010Z) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1792053150296",
+      "timestamp": "Just now",
+      "read": false,
+      "userId": "usr_1"
+    },
+    {
+      "title": "Reminder Due: ⚡ Quick Test Reminder (5s timer)",
+      "message": "Your scheduled reminder \"⚡ Quick Test Reminder (5s timer)\" (2026-10-15T08:04:59.010Z) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1792052948916",
+      "timestamp": "Just now",
+      "read": false,
+      "userId": "usr_1"
+    },
+    {
+      "title": "✅ Telegram Reminder Acknowledged",
+      "message": "User acknowledged \"⚡ Quick Test Reminder (5s timer)\" on Telegram at 01:35 PM.",
+      "type": "reminder",
+      "link": "/dashboard",
+      "id": "notif_1792051510280",
+      "timestamp": "Just now",
+      "read": false,
+      "userId": "usr_1"
+    },
+    {
+      "title": "✈️ Telegram Reminder Alert Sent",
+      "message": "Dispatched reminder \"⚡ Quick Test Reminder (5s timer)\" to Telegram (@NexaTaskAlertsBot). Awaiting user acknowledgement.",
+      "type": "reminder",
+      "link": "/dashboard",
+      "id": "notif_1792051500804",
+      "timestamp": "Just now",
+      "read": false,
+      "userId": "usr_1"
+    },
+    {
+      "title": "Reminder Due: ⚡ Quick Test Reminder (5s timer)",
+      "message": "Your scheduled reminder \"⚡ Quick Test Reminder (5s timer)\" (2026-10-15T08:04:59.010Z) is due.",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1792051500475",
+      "timestamp": "Just now",
+      "read": false,
+      "userId": "usr_1"
+    },
+    {
+      "title": "Reminder Set",
+      "message": "\"⚡ Quick Test Reminder (5s timer)\"",
+      "type": "reminder",
+      "link": "/reminders",
+      "id": "notif_1792051494388",
+      "timestamp": "Just now",
+      "read": false,
+      "userId": "usr_1"
+    },
     {
       "title": "✅ Telegram Reminder Acknowledged",
       "message": "\"Call the client\" was acknowledged via Nexa AI Dashboard at 10:57 PM.",
@@ -366,7 +569,8 @@
       "link": "/dashboard",
       "id": "notif_1791998866204",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "✈️ Telegram Alert Sent",
@@ -375,7 +579,8 @@
       "link": "/dashboard",
       "id": "notif_1791998841470",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "✅ Telegram Reminder Acknowledged",
@@ -384,7 +589,8 @@
       "link": "/dashboard",
       "id": "notif_1791998794384",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "✈️ Telegram Test Alert Dispatched",
@@ -393,7 +599,8 @@
       "link": "/reminders",
       "id": "notif_1791998259169",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Due: Call the client",
@@ -402,7 +609,8 @@
       "link": "/reminders",
       "id": "notif_1791997351460",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Due: Call the client",
@@ -411,7 +619,8 @@
       "link": "/reminders",
       "id": "notif_1791997343590",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Due: call the client ",
@@ -420,7 +629,8 @@
       "link": "/reminders",
       "id": "notif_1791561780833",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "✈️ Telegram Alert Sent",
@@ -429,7 +639,8 @@
       "link": "/reminders",
       "id": "notif_1791561709883",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Set",
@@ -438,7 +649,8 @@
       "link": "/reminders",
       "id": "notif_1791561679134",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Due: ⚡ Quick Test Reminder (10s timer)",
@@ -447,7 +659,8 @@
       "link": "/reminders",
       "id": "notif_1791561645353",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Due: ⚡ Quick Test Reminder (10s timer)",
@@ -456,7 +669,8 @@
       "link": "/reminders",
       "id": "notif_1791561635060",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "✈️ Telegram Alert Sent",
@@ -465,7 +679,8 @@
       "link": "/reminders",
       "id": "notif_1791561634834",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Set",
@@ -474,7 +689,8 @@
       "link": "/reminders",
       "id": "notif_1791561624145",
       "timestamp": "Just now",
-      "read": false
+      "read": false,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Due: Submit Python project assignment at 8 PM",
@@ -483,7 +699,8 @@
       "link": "/reminders",
       "id": "notif_1791559860875",
       "timestamp": "Just now",
-      "read": true
+      "read": true,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Due: Remind 30 mins before 4 PM Client Meeting",
@@ -492,7 +709,8 @@
       "link": "/reminders",
       "id": "notif_1791559858032",
       "timestamp": "Just now",
-      "read": true
+      "read": true,
+      "userId": "usr_1"
     },
     {
       "title": "📱 WhatsApp/SMS Sent",
@@ -501,7 +719,8 @@
       "link": "/reminders",
       "id": "notif_1791559801418",
       "timestamp": "Just now",
-      "read": true
+      "read": true,
+      "userId": "usr_1"
     },
     {
       "title": "📱 WhatsApp/SMS Sent",
@@ -510,7 +729,8 @@
       "link": "/reminders",
       "id": "notif_1791557606915",
       "timestamp": "Just now",
-      "read": true
+      "read": true,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Due: ⚡ Quick Test Reminder (5s timer)",
@@ -519,7 +739,8 @@
       "link": "/reminders",
       "id": "notif_1791557606019",
       "timestamp": "Just now",
-      "read": true
+      "read": true,
+      "userId": "usr_1"
     },
     {
       "title": "📱 WhatsApp/SMS Sent",
@@ -528,7 +749,8 @@
       "link": "/reminders",
       "id": "notif_1791557600968",
       "timestamp": "Just now",
-      "read": true
+      "read": true,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Set",
@@ -537,7 +759,8 @@
       "link": "/reminders",
       "id": "notif_1791557600919",
       "timestamp": "Just now",
-      "read": true
+      "read": true,
+      "userId": "usr_1"
     },
     {
       "title": "📱 WhatsApp/SMS Sent",
@@ -546,7 +769,8 @@
       "link": "/reminders",
       "id": "notif_1791557600402",
       "timestamp": "Just now",
-      "read": true
+      "read": true,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Due: ⚡ Quick Test Reminder (5s timer)",
@@ -555,7 +779,8 @@
       "link": "/reminders",
       "id": "notif_1791557598577",
       "timestamp": "Just now",
-      "read": true
+      "read": true,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Set",
@@ -564,7 +789,8 @@
       "link": "/reminders",
       "id": "notif_1791557593411",
       "timestamp": "Just now",
-      "read": true
+      "read": true,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Due: Remind 30 mins before 4 PM Client Meeting",
@@ -573,7 +799,8 @@
       "link": "/reminders",
       "id": "notif_1791557284180",
       "timestamp": "Just now",
-      "read": true
+      "read": true,
+      "userId": "usr_1"
     },
     {
       "title": "Reminder Due: Submit Python project assignment at 8 PM",
@@ -582,7 +809,8 @@
       "link": "/reminders",
       "id": "notif_1791557284177",
       "timestamp": "Just now",
-      "read": true
+      "read": true,
+      "userId": "usr_1"
     },
     {
       "id": "notif_1",
@@ -591,7 +819,8 @@
       "type": "meeting",
       "timestamp": "10 mins ago",
       "read": true,
-      "link": "/calendar"
+      "link": "/calendar",
+      "userId": "usr_1"
     },
     {
       "id": "notif_2",
@@ -600,7 +829,8 @@
       "type": "task",
       "timestamp": "1 hour ago",
       "read": true,
-      "link": "/tasks"
+      "link": "/tasks",
+      "userId": "usr_1"
     },
     {
       "id": "notif_3",
@@ -609,7 +839,8 @@
       "type": "email",
       "timestamp": "2 hours ago",
       "read": true,
-      "link": "/email"
+      "link": "/email",
+      "userId": "usr_1"
     },
     {
       "id": "notif_4",
@@ -618,7 +849,8 @@
       "type": "ai",
       "timestamp": "3 hours ago",
       "read": true,
-      "link": "/analytics"
+      "link": "/analytics",
+      "userId": "usr_1"
     }
   ],
   "chatHistory": [
@@ -895,6 +1127,112 @@
     }
   ],
   "actionHistory": [
+    {
+      "action": "Task Created",
+      "category": "task",
+      "details": "Created task \"Design user interface mockups\" (high priority, due 2026-10-18)",
+      "status": "success",
+      "meta": {
+        "taskId": "task_1792054782614_kyhm",
+        "userId": "usr_1792054725054_fnpz"
+      },
+      "id": "act_1792054782615_v334",
+      "timestamp": "10/15/26, 8:59 AM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"⚡ Quick Test Reminder (5s timer)\"",
+      "id": "act_1792054766540_pcn4",
+      "timestamp": "10/15/26, 8:59 AM"
+    },
+    {
+      "action": "Reminder Created",
+      "category": "reminder",
+      "details": "Created reminder \"Configure Telegram Alerts (@NexaTaskAlertsBot) in Settings\"",
+      "status": "success",
+      "meta": {
+        "reminderId": "rem_1792054725063_rvzs",
+        "userId": "usr_1792054725054_fnpz"
+      },
+      "id": "act_1792054725063_kjc0",
+      "timestamp": "10/15/26, 8:58 AM"
+    },
+    {
+      "action": "Task Created",
+      "category": "task",
+      "details": "Created task \"Welcome to Nexa AI, Alex Morgan! 👋\" (high priority, due 2026-10-15)",
+      "status": "success",
+      "meta": {
+        "taskId": "task_1792054725055_vyoc",
+        "userId": "usr_1792054725054_fnpz"
+      },
+      "id": "act_1792054725061_y9jj",
+      "timestamp": "10/15/26, 8:58 AM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"⚡ Quick Test Reminder (5s timer)\"",
+      "id": "act_1792053150302_hael",
+      "timestamp": "10/15/26, 8:32 AM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"⚡ Quick Test Reminder (5s timer)\"",
+      "id": "act_1792052948912_r5m3",
+      "timestamp": "10/15/26, 8:29 AM"
+    },
+    {
+      "action": "Telegram Reminder Acknowledged (@NexaTaskAlertsBot)",
+      "category": "reminder",
+      "details": "Confirmed by Saniya (7159599318) at 01:35 PM for \"⚡ Quick Test Reminder (5s timer)\"",
+      "status": "success",
+      "meta": {
+        "notificationId": "notif_tg_1792051499349_tyjbv",
+        "reminderId": "rem_1792051494388",
+        "acknowledgedTime": "01:35 PM",
+        "chatId": 7159599318
+      },
+      "id": "act_1792051510281_sutb",
+      "timestamp": "10/15/26, 8:05 AM"
+    },
+    {
+      "action": "Telegram Reminder Alert (@NexaTaskAlertsBot)",
+      "category": "reminder",
+      "details": "Auto-sent Telegram alert to Chat ID 7159599318 for \"⚡ Quick Test Reminder (5s timer)\" (Status: sent)",
+      "status": "success",
+      "meta": {
+        "reminderId": "rem_1792051494388",
+        "notificationId": "notif_tg_1792051499349_tyjbv",
+        "channels": [
+          "telegram"
+        ],
+        "status": "sent",
+        "logId": "tg_1792051499350_czyn9"
+      },
+      "id": "act_1792051500804_xlqd",
+      "timestamp": "10/15/26, 8:05 AM"
+    },
+    {
+      "action": "Reminder Alert Triggered",
+      "category": "reminder",
+      "details": "Dispatched browser notification alert for \"⚡ Quick Test Reminder (5s timer)\"",
+      "id": "act_1792051500471_zyjr",
+      "timestamp": "10/15/26, 8:05 AM"
+    },
+    {
+      "action": "Reminder Created",
+      "category": "reminder",
+      "details": "Created reminder \"⚡ Quick Test Reminder (5s timer)\"",
+      "status": "success",
+      "meta": {
+        "reminderId": "rem_1792051494388"
+      },
+      "id": "act_1792051494389_qtvx",
+      "timestamp": "10/15/26, 8:04 AM"
+    },
     {
       "action": "Reminder Acknowledged (Dashboard)",
       "category": "reminder",
@@ -1314,6 +1652,18 @@
   ],
   "telegramDispatchLogs": [
     {
+      "id": "tg_1792051499350_czyn9",
+      "reminderId": "rem_1792051494388",
+      "reminderTitle": "⚡ Quick Test Reminder (5s timer)",
+      "chatId": "7159599318",
+      "recipientName": "Saniya",
+      "message": "🔔 NEXA AI TASK & REMINDER ALERT 🚨\n\n📌 Title: ⚡ Quick Test Reminder (5s timer)\n⏰ Scheduled: 01:34 PM\n⚡ Priority: HIGH\n🕒 Triggered At: 01:34 PM\n\n✨ Sent automatically by your Nexa AI Personal Productivity Assistant.\n🤖 Bot: @NexaTaskAlertsBot",
+      "status": "acknowledged",
+      "timestamp": "2026-10-15T08:05:00.801Z",
+      "telegramMessageId": 26,
+      "acknowledgedAt": "2026-10-15T08:05:08.546Z"
+    },
+    {
       "id": "tg_1791998841029_qxd35",
       "reminderTitle": "Call the client",
       "chatId": "7159599318",
@@ -1365,6 +1715,28 @@
     }
   ],
   "telegramNotifications": [
+    {
+      "id": "notif_tg_1792051499349_tyjbv",
+      "reminderId": "rem_1792051494388",
+      "taskId": "rem_1792051494388",
+      "taskTitle": "⚡ Quick Test Reminder (5s timer)",
+      "priority": "HIGH",
+      "scheduledTime": "01:34 PM",
+      "triggeredTime": "01:34 PM",
+      "chatId": "7159599318",
+      "status": "acknowledged",
+      "createdAt": "2026-10-15T08:04:59.349Z",
+      "telegramMessageId": 26,
+      "sentAt": "2026-10-15T08:05:00.803Z",
+      "sentTimestamp": "01:35 PM",
+      "acknowledgedAt": "2026-10-15T08:05:08.546Z",
+      "acknowledgedTime": "01:35 PM",
+      "acknowledgedBy": {
+        "userId": 7159599318,
+        "username": "Satamboli613",
+        "firstName": "Saniya"
+      }
+    },
     {
       "id": "notif_tg_1791998841028_mkf4a",
       "reminderId": "rem_test_1791998841028",
@@ -1425,7 +1797,45 @@
         "gmail": true,
         "googleCalendar": true,
         "googleTasks": true
-      }
+      },
+      "userId": "usr_1"
+    },
+    {
+      "theme": "dark",
+      "aiModel": "gemini-3.6-flash",
+      "responseStyle": "concise",
+      "memoryEnabled": true,
+      "notifications": {
+        "email": true,
+        "task": true,
+        "calendar": true,
+        "ai": true,
+        "phone": false,
+        "telegram": true,
+        "whatsapp": false,
+        "sms": false
+      },
+      "phoneSettings": {
+        "enabled": true,
+        "phoneNumber": "+1 (555) 382-9104",
+        "channels": "both",
+        "countryCode": "+1",
+        "autoAlertOnDue": true
+      },
+      "telegramSettings": {
+        "enabled": true,
+        "botToken": "8711965885:AAEtgT1w0S1NK_aH_aH_djPV_JWr0Pz5e5s",
+        "botUsername": "NexaTaskAlertsBot",
+        "chatId": "",
+        "telegramUsername": "",
+        "autoAlertOnDue": true
+      },
+      "integrations": {
+        "gmail": true,
+        "googleCalendar": true,
+        "googleTasks": true
+      },
+      "userId": "usr_1792054725054_fnpz"
     }
   ]
 }

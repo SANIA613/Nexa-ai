@@ -44,7 +44,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ setActiveTab }) =>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
-            {getGreeting()}, {user?.name || 'Saniya'} 👋
+            {getGreeting()}, {user?.name || 'there'} 👋
           </h1>
           <p className="text-slate-500 text-sm mt-1">Here's what's happening with your day.</p>
         </div>
@@ -200,7 +200,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ setActiveTab }) =>
                   AI
                 </div>
                 <div className="bg-slate-100 p-3.5 rounded-2xl rounded-tl-none text-sm text-slate-800 max-w-[85%]">
-                  Hello Saniya! I've analyzed your schedule. You have a free 2-hour slot this afternoon at 2:00 PM. Should I schedule your "Python Project Work" then?
+                  Hello {user?.name || 'there'}! I've analyzed your schedule. You have a free slot this afternoon. Should I help you plan your next task?
                 </div>
               </div>
 

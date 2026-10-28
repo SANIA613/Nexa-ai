@@ -35,12 +35,41 @@ import {
   isNotificationSupported
 } from '../lib/notifications';
 
+import { useAuth } from './AuthContext';
+
 export interface ToastMessage {
   id: string;
   type: 'success' | 'info' | 'warning' | 'error';
   title: string;
   message?: string;
 }
+
+export const authFetch = (url: string, options: RequestInit = {}): Promise<Response> => {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('nexa_auth_token') : null;
+  const userStr = typeof window !== 'undefined' ? localStorage.getItem('nexa_auth_user') : null;
+  let userId = '';
+  try {
+    if (userStr) {
+      const u = JSON.parse(userStr);
+      if (u && u.id) userId = u.id;
+    }
+  } catch {}
+
+  const defaultHeaders: Record<string, string> = {
+    'Content-Type': 'application/json'
+  };
+  if (token) defaultHeaders['Authorization'] = `Bearer ${token}`;
+  if (userId) defaultHeaders['x-user-id'] = userId;
+
+  const customHeaders = (options.headers || {}) as Record<string, string>;
+  return fetch(url, {
+    ...options,
+    headers: {
+      ...defaultHeaders,
+      ...customHeaders
+    }
+  });
+};
 
 interface AppContextType {
   // Toast notifications
@@ -198,6 +227,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { user } = useAuth();
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [emails, setEmails] = useState<Email[]>([]);
@@ -369,7 +399,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Initial Data Fetching
   const fetchTasks = async () => {
     try {
-      const res = await fetch('/api/tasks');
+      const res = await authFetch('/api/tasks');
       if (res.ok) {
         const data = await res.json();
         setTasks(data);
@@ -477,7 +507,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const fetchReminders = async () => {
     try {
-      const res = await fetch('/api/reminders');
+      const res = await authFetch('/api/reminders');
       if (res.ok) {
         const data = await res.json();
         setReminders(data);
@@ -489,7 +519,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const fetchNotifications = async () => {
     try {
-      const res = await fetch('/api/notifications');
+      const res = await authFetch('/api/notifications');
       if (res.ok) {
         const data = await res.json();
         setNotifications(data);
@@ -543,7 +573,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const fetchSettings = async () => {
     try {
-      const res = await fetch('/api/settings');
+      const res = await authFetch('/api/settings');
       if (res.ok) {
         const data = await res.json();
         setSettings(data);
@@ -561,7 +591,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const fetchTelegramSettings = async () => {
     try {
-      const res = await fetch('/api/telegram/config');
+      const res = await authFetch('/api/telegram/config');
       if (res.ok) {
         const data = await res.json();
         if (data.telegramSettings) {
@@ -569,7 +599,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         }
       }
     } catch (e) {
-      console.warn('Telegram config fetch notice:', e);
+      console.warn('Telegram settings fetch notice:', e);
     }
   };
 
@@ -864,6 +894,20 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return () => clearInterval(interval);
   }, []);
 
+  // Reload user workspace whenever authenticated user changes
+  useEffect(() => {
+    if (user?.id) {
+      fetchTasks();
+      fetchReminders();
+      fetchNotifications();
+      fetchSettings();
+      fetchTelegramSettings();
+      fetchTelegramNotifications();
+      fetchTelegramLogs();
+      fetchActionHistory();
+    }
+  }, [user?.id]);
+
   // Scheduled Reminder Alert Engine (Checks every 1 second)
   useEffect(() => {
     const checkScheduledReminders = () => {
@@ -954,7 +998,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Tasks actions
   const createTask = async (task: Partial<Task>): Promise<Task | null> => {
     try {
-      const res = await fetch('/api/tasks', {
+      const res = await authFetch('/api/tasks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(task)
@@ -972,7 +1016,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const updateTask = async (id: string, updates: Partial<Task>) => {
     try {
-      await fetch(`/api/tasks/${id}`, {
+      await authFetch(`/api/tasks/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updates)
@@ -985,7 +1029,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const deleteTask = async (id: string) => {
     try {
-      await fetch(`/api/tasks/${id}`, { method: 'DELETE' });
+      await authFetch(`/api/tasks/${id}`, { method: 'DELETE' });
       await fetchTasks();
       addToast('info', 'Task Deleted');
     } catch (e) {
@@ -995,7 +1039,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const completeTask = async (id: string) => {
     try {
-      await fetch(`/api/tasks/${id}/complete`, { method: 'POST' });
+      await authFetch(`/api/tasks/${id}/complete`, { method: 'POST' });
       await fetchTasks();
       addToast('success', 'Task Completed!');
     } catch (e) {
@@ -1201,7 +1245,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Reminders actions
   const createReminder = async (data: Partial<Reminder>): Promise<Reminder | null> => {
     try {
-      const res = await fetch('/api/reminders', {
+      const res = await authFetch('/api/reminders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -1222,7 +1266,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (updates.datetime || updates.snoozedUntil || updates.completed !== undefined) {
         alertedReminderIds.current.delete(id);
       }
-      await fetch(`/api/reminders/${id}`, {
+      await authFetch(`/api/reminders/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updates)
@@ -1237,7 +1281,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     try {
       alertedReminderIds.current.delete(id);
       setDueReminders((prev) => prev.filter((r) => r.id !== id));
-      await fetch(`/api/reminders/${id}`, { method: 'DELETE' });
+      await authFetch(`/api/reminders/${id}`, { method: 'DELETE' });
       await fetchReminders();
       addToast('info', 'Reminder deleted');
     } catch (e) {

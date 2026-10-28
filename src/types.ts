@@ -12,6 +12,18 @@ export interface User {
   role?: string;
 }
 
+export interface StoredUser extends User {
+  passwordHash: string;
+  createdAt: string;
+}
+
+export interface AuthResponse {
+  success: boolean;
+  user: User;
+  token: string;
+  message?: string;
+}
+
 export interface SubTask {
   id: string;
   title: string;
@@ -20,6 +32,7 @@ export interface SubTask {
 
 export interface Task {
   id: string;
+  userId?: string;
   title: string;
   description?: string;
   message?: string;
@@ -72,6 +85,7 @@ export interface CalendarEvent {
 
 export interface Reminder {
   id: string;
+  userId?: string;
   title: string;
   description?: string;
   message?: string;
@@ -181,6 +195,7 @@ export interface PhoneNotificationSettings {
 
 export interface NotificationItem {
   id: string;
+  userId?: string;
   title: string;
   message: string;
   type: 'meeting' | 'task' | 'email' | 'reminder' | 'ai';
@@ -222,6 +237,7 @@ export interface IntegrationStatus {
 }
 
 export interface UserSettings {
+  userId?: string;
   theme: ThemeMode;
   aiModel: string;
   responseStyle: 'concise' | 'detailed' | 'professional';

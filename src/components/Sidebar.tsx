@@ -125,8 +125,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 className="w-10 h-10 rounded-full object-cover bg-indigo-500 font-bold text-white shadow-lg shrink-0"
               />
               <div className="overflow-hidden">
-                <div className="text-sm font-medium truncate text-white">{user?.name || 'Saniya Sharma'}</div>
-                <div className="text-xs text-slate-400 truncate">Pro Plan Member</div>
+                <div className="text-sm font-medium truncate text-white">{user?.name || 'User'}</div>
+                <div className="text-xs text-slate-400 truncate">{user?.role || 'Pro Plan Member'}</div>
               </div>
             </div>
 
